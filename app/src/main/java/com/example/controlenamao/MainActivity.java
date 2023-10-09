@@ -1,13 +1,17 @@
 package com.example.controlenamao;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
+
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,17 +26,17 @@ public class MainActivity extends AppCompatActivity {
 
         // Link those objects with their respective
         // id's that we have given in .XML file
-        tvCombustivel = findViewById(R.id.tvCombustivel);
-        tvLucroFinal = findViewById(R.id.tvLucroFinal);
-        tvPneus = findViewById(R.id.tvPneus);
-        tvServicoEletrico = findViewById(R.id.tvServicoEletrico);
-        pieChart = findViewById(R.id.piechart);
-
-        setData();
+//        tvCombustivel = findViewById(R.id.tvCombustivel);
+//        tvLucroFinal = findViewById(R.id.tvLucroFinal);
+//        tvPneus = findViewById(R.id.tvPneus);
+//        tvServicoEletrico = findViewById(R.id.tvServicoEletrico);
+//        pieChart = findViewById(R.id.piechart);
+//
+//        setData();
     }
 
     private void setData(){
-        // Set the percentage of language used
+        // Set the percentage of type used
         tvCombustivel.setText(Integer.toString(40));
         tvLucroFinal.setText(Integer.toString(30));
         tvPneus.setText(Integer.toString(5));

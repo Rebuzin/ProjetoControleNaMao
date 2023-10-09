@@ -1,2 +1,4 @@
-package com.example.controlenamao.model;public class Gasto {
+package com.example.controlenamao.model;
+
+public class Gasto {
 }
