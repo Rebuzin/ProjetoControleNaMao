@@ -1,8 +1,9 @@
 package com.example.controlenamao.controller;
 
 import android.content.Context;
+import android.widget.Toast;
 
-import com.example.controlenamao.helper.VeiculoDao;
+import com.example.controlenamao.dao.VeiculoDao;
 import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class VeiculoController {
     }
 
     public String validaVeiculo(String renamed){
+        Toast.makeText(context, renamed, Toast.LENGTH_SHORT).show();
         String mensagem = "";
         if(renamed == null || renamed.isEmpty()){
             mensagem += "A placa do veiculo deve ser preenchida!!\n";

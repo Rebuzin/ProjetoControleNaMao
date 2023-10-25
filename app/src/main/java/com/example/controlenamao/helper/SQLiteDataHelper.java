@@ -18,17 +18,12 @@ public class SQLiteDataHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase){
         sqLiteDatabase.execSQL("CREATE TABLE CREDITO (VALOR DOUBLE, DATA DATE, STATUS BOOLEAN)");
         sqLiteDatabase.execSQL("CREATE TABLE DEBITO (VALOR DOUBLE, DATA DATE, STATUS BOOLEAN)");
-        sqLiteDatabase.execSQL("CREATE TABLE CAMINHAO (RENAMED VARCHAR(10), STATUS BOOLEAN)");
+        sqLiteDatabase.execSQL("CREATE TABLE VEICULO (RENAMED VARCHAR(10), STATUS BOOLEAN)");
         sqLiteDatabase.execSQL("CREATE TABLE GASTO (NAME VARCHAR(20), STATUS BOOLEAN)");
         sqLiteDatabase.execSQL("CREATE TABLE FRETE (NAME VARCHAR(20), STATUS BOOLEAN)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion){
-        sqLiteDatabase.execSQL("CREATE TABLE CREDITO (VALOR DOUBLE, DATA DATE, STATUS BOOLEAN)");
-        sqLiteDatabase.execSQL("CREATE TABLE DEBITO (VALOR DOUBLE, DATA DATE, STATUS BOOLEAN)");
-        sqLiteDatabase.execSQL("CREATE TABLE CAMINHAO (RENAMED VARCHAR(10), STATUS BOOLEAN)");
-        sqLiteDatabase.execSQL("CREATE TABLE GASTO (NAME VARCHAR(20), STATUS BOOLEAN)");
-        sqLiteDatabase.execSQL("CREATE TABLE FRETE (NAME VARCHAR(20), STATUS BOOLEAN)");
     }
 }

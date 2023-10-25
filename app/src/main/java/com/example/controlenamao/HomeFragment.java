@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
-public class HomeFragment extends Fragment{
+public class HomeFragment extends Fragment {
 
     // Create the object of TextView and PieChart class
     TextView tvCombustivel, tvLucroFinal, tvPneus, tvServicoEletrico;
@@ -25,22 +26,21 @@ public class HomeFragment extends Fragment{
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        tvCombustivel = getView().findViewById(R.id.tvCombustivel);
+        tvLucroFinal = getView().findViewById(R.id.tvLucroFinal);
+        tvPneus = getView().findViewById(R.id.tvPneus);
+        tvServicoEletrico = getView().findViewById(R.id.tvServicoEletrico);
+        pieChart = getView().findViewById(R.id.piechart);
+
+        setData();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        // Link those objects with their respective
-        // id's that we have given in .XML file
-//        tvCombustivel = tvCombustivel.findViewById(R.id.tvCombustivel);
-//        tvLucroFinal = tvLucroFinal.findViewById(R.id.tvLucroFinal);
-//        tvPneus = tvPneus.findViewById(R.id.tvPneus);
-//        tvServicoEletrico = tvServicoEletrico.findViewById(R.id.tvServicoEletrico);
-//        pieChart = pieChart.findViewById(R.id.piechart);
-//
-//        setData();
-
         return inflater.inflate(R.layout.fragment_home, container, false);
-
     }
 
 //    @Override
@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment{
 //        setData();
 //    }
 
-    private void setData(){
+    private void setData() {
         // Set the percentage of language used
         tvCombustivel.setText(Integer.toString(40));
         tvLucroFinal.setText(Integer.toString(30));

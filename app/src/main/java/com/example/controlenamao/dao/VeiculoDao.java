@@ -1,4 +1,4 @@
-package com.example.controlenamao.helper;
+package com.example.controlenamao.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.example.controlenamao.dao.GenericDao;
+import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;

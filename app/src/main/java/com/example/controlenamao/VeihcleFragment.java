@@ -2,6 +2,8 @@ package com.example.controlenamao;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -23,22 +25,34 @@ public class VeihcleFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        veiculocontroller = new VeiculoController(getContext());
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        btCadastroVeiculo = getView().findViewById(R.id.btCadastroVeiculo);
+        edRenamed = getView().findViewById(R.id.edRenamed);
+
+        btCadastroVeiculo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarVeiculo();
+            }
+        });
+    }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        if(!(btCadastroVeiculo == null)){
-            salvarVeiculo();
-        }
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_veihcle, container, false);
 
     }
-
-
 
     private void salvarVeiculo() {
         String validacao = veiculocontroller.validaVeiculo(
@@ -51,9 +65,12 @@ public class VeihcleFragment extends Fragment {
         } else {
             if (veiculocontroller.salvarVeiculo(
                     edRenamed.getText().toString()) > 0) {
-                Toast.makeText(getContext(), "Veiculo cadastrado com sucesso!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),
+                        "Veiculo cadastrado com sucesso!!",
+                        Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(getContext(), "Erro ao cadastrar Veiculo, verifique LOG.",
+                Toast.makeText(getContext(),
+                        "Erro ao cadastrar Veiculo, verifique LOG.",
                         Toast.LENGTH_LONG).show();
             }
         }
