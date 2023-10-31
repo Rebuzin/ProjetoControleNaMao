@@ -40,12 +40,13 @@ public class VeiculoController {
     }
 
     public String validaVeiculo(String renamed){
-        Toast.makeText(context, renamed, Toast.LENGTH_SHORT).show();
+
         String mensagem = "";
         if(renamed == null || renamed.isEmpty()){
             mensagem += "A placa do veiculo deve ser preenchida!!\n";
+        }else{
+            Toast.makeText(context, renamed, Toast.LENGTH_SHORT).show();
         }
         return mensagem;
     }
-
 }

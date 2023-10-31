@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 public class DebitFragment extends Fragment {
 
-
     public DebitFragment() {
         // Required empty public constructor
     }

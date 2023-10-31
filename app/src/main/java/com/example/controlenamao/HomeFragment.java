@@ -2,15 +2,16 @@ package com.example.controlenamao;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.example.controlenamao.Adapter.MyAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
@@ -37,27 +38,13 @@ public class HomeFragment extends Fragment {
         setData();
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
-
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//
-//        // Link those objects with their respective
-//        // id's that we have given in .XML file
-//        tvCombustivel = tvCombustivel.findViewById(R.id.tvCombustivel);
-//        tvLucroFinal = tvLucroFinal.findViewById(R.id.tvLucroFinal);
-//        tvPneus = tvPneus.findViewById(R.id.tvPneus);
-//        tvServicoEletrico = tvServicoEletrico.findViewById(R.id.tvServicoEletrico);
-//        pieChart = pieChart.findViewById(R.id.piechart);
-//
-//        setData();
-//    }
 
     private void setData() {
         // Set the percentage of language used
@@ -71,25 +58,24 @@ public class HomeFragment extends Fragment {
                 new PieModel(
                         "Combustivel",
                         Integer.parseInt(tvCombustivel.getText().toString()),
-                        Color.parseColor("#FFA726")));
+                        Color.parseColor("#AF4646")));
         pieChart.addPieSlice(
                 new PieModel(
                         "Lucro Final",
                         Integer.parseInt(tvLucroFinal.getText().toString()),
-                        Color.parseColor("#66BB6A")));
+                        Color.parseColor("#18E622")));
         pieChart.addPieSlice(
                 new PieModel(
                         "Pneus",
                         Integer.parseInt(tvPneus.getText().toString()),
-                        Color.parseColor("#EF5350")));
+                        Color.parseColor("#403A3A")));
         pieChart.addPieSlice(
                 new PieModel(
                         "Serviço Elétrico",
                         Integer.parseInt(tvServicoEletrico.getText().toString()),
-                        Color.parseColor("#29B6F6")));
+                        Color.parseColor("#FFC107")));
 
         // To animate the pie chart
         pieChart.startAnimation();
     }
-
 }

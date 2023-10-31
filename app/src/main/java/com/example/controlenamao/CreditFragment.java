@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 public class CreditFragment extends Fragment {
 
-
     public CreditFragment() {
         // Required empty public constructor
     }

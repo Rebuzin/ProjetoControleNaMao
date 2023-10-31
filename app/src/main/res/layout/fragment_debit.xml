@@ -71,7 +71,7 @@
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#0A22F4"
+            android:backgroundTint="@color/Page"
             android:textColor="@color/white"
             android:layout_gravity="center"
             android:text="INSERIR" />
@@ -103,7 +103,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/Pneus"
+                android:backgroundTint="@color/Negacao"
                 android:textColor="@color/white"
                 android:layout_margin="10dp"
                 android:text="Excluir"/>
@@ -112,7 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/LucroFinal"
+                android:backgroundTint="@color/Afirmacao"
                 android:textColor="@color/white"
                 android:layout_margin="10dp"
                 android:text="Voltar"/>
