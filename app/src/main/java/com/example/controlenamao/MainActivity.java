@@ -1,19 +1,37 @@
 package com.example.controlenamao;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+//import android.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.controlenamao.Adapter.MyAdapter;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
-import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private DrawerLayout drawerLayout;
+
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     // Create the object of TextView and PieChart class
     TextView tvCombustivel, tvLucroFinal, tvPneus, tvServicoEletrico;
@@ -22,49 +40,100 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
-        // Link those objects with their respective
-        // id's that we have given in .XML file
-//        tvCombustivel = findViewById(R.id.tvCombustivel);
-//        tvLucroFinal = findViewById(R.id.tvLucroFinal);
-//        tvPneus = findViewById(R.id.tvPneus);
-//        tvServicoEletrico = findViewById(R.id.tvServicoEletrico);
-//        pieChart = findViewById(R.id.piechart);
-//
-//        setData();
+
+        //Métodos para o Navigation Drawer
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.open_nav, R.string.close_nav);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        /**
+         * Ver o motivo de isso quebrar o layout(sem fica aparentemente certo
+         *
+         * **/
+        if(savedInstanceState == null){
+//            getSupportFragmentManager().beginTransaction().replace(R.id.viewPager2, new HomeFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
+
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager2);
+
+        //Adicionando as tabs
+        tabLayout.addTab(tabLayout.newTab().setText("Faturamento"));
+        tabLayout.addTab(tabLayout.newTab().setText("Crédito"));
+        tabLayout.addTab(tabLayout.newTab().setText("Débito"));
+
+        final MyAdapter adapter = new MyAdapter(this,getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
     }
 
-    private void setData(){
-        // Set the percentage of type used
-        tvCombustivel.setText(Integer.toString(40));
-        tvLucroFinal.setText(Integer.toString(30));
-        tvPneus.setText(Integer.toString(5));
-        tvServicoEletrico.setText(Integer.toString(25));
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new HomeFragment()).commit();
+                break;
 
-        // Set the data and color to the pie chart
-        pieChart.addPieSlice(
-                new PieModel(
-                        "Combustivel",
-                        Integer.parseInt(tvCombustivel.getText().toString()),
-                        Color.parseColor("#FFA726")));
-        pieChart.addPieSlice(
-                new PieModel(
-                        "Lucro Final",
-                        Integer.parseInt(tvLucroFinal.getText().toString()),
-                        Color.parseColor("#66BB6A")));
-        pieChart.addPieSlice(
-                new PieModel(
-                        "Pneus",
-                        Integer.parseInt(tvPneus.getText().toString()),
-                        Color.parseColor("#EF5350")));
-        pieChart.addPieSlice(
-                new PieModel(
-                        "Serviço Elétrico",
-                        Integer.parseInt(tvServicoEletrico.getText().toString()),
-                        Color.parseColor("#29B6F6")));
+            case R.id.nav_freight:
+                getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new FreightFragment()).commit();
+                break;
 
-        // To animate the pie chart
-        pieChart.startAnimation();
+            case R.id.nav_veihcle:
+                getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new VeihcleFragment()).commit();
+                break;
+
+            case R.id.nav_expense:
+                getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new ExpenseFragment()).commit();
+                break;
+
+            case R.id.nav_about:
+                getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new AboutFragment()).commit();
+                break;
+
+            case R.id.nav_logout:
+                Toast.makeText(this, "Sair!", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
