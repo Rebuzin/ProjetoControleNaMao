@@ -1,4 +1,7 @@
 <resources>
+
+    <string name="nameEmpresa">Mamore Transportes</string>
+
     <string name="app_name">Controle na Mão</string>
     <string name="abas">Faturamento</string>
     <string name="aba1">Crédito</string>
@@ -10,7 +13,21 @@
 
     <string name="open_nav">Open Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--SOBRE NOS-->
+    <string name="aboutPt1">Nós somos uma empresa formada atualmente por 4 funcionarios (3 motoristas e 1 auxiliar administrativo) e 2 sócios"
+    </string>
+
+    <string name="aboutPt2">Criada em 2008 por Osvaldo de Oliveira e Eliana de Fátima Buzin, visávamos apenas o transporte de mercadorias como autonomos, e hoje, alguns anos depois temos uma determinada importância no transporte de suinos
+    </string>
+
+    <string name="aboutPt3">Temos valores baseados na confiança e dedicação, onde todos os motoristas são comissionados e recebem de acordo com seu compromisso com o trabalho
+    </string>
+
+    <string name="aboutPt4">Nosso objetivo de futuro é dar a devida oportunidade para as pessoas sempre tratando elas com respeito e cordialidade até mesmo pois sabemos a vivência da profissão
+    </string>
+
+
 
 </resources>

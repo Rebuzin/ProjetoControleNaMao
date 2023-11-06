@@ -37,15 +37,13 @@ public class MainHomeFragment extends Fragment {
 
     }
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main_home, container, false);
 
     }
+
     public void atualizaTabs(){
         //Adicionando as tabs
         tabLayout.addTab(tabLayout.newTab().setText("Faturamento"));
@@ -54,7 +52,6 @@ public class MainHomeFragment extends Fragment {
         MyAdapter adapter = new MyAdapter(this.getContext(),
                 getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
-
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -74,5 +71,4 @@ public class MainHomeFragment extends Fragment {
             }
         });
     }
-
 }

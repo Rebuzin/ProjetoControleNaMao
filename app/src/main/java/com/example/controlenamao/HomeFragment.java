@@ -38,8 +38,6 @@ public class HomeFragment extends Fragment {
         setData();
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -1,5 +1,6 @@
 package com.example.controlenamao;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,4 +71,9 @@ public class VeihcleFragment extends Fragment {
             }
         }
     }
+
+//    private void voltarHome(){
+//        Intent intent = new Intent(this, Class<MainActivity>);
+//        startActivity(intent);
+//    }
 }
