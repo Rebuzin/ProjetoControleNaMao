@@ -49,9 +49,10 @@
             android:text="Data" />
 
         <EditText
+            android:id="@+id/edDataDebito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"/>
+            android:inputType=""/>
 
         <TextView
             android:layout_width="match_parent"
@@ -61,12 +62,14 @@
             android:text="Valor" />
 
         <EditText
+            android:id="@+id/edValorDebito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Insira o valor do Débito"
             android:inputType="number"/>
 
         <Button
-            android:id="@+id/btInserirVl"
+            android:id="@+id/btCadastroDebito"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
