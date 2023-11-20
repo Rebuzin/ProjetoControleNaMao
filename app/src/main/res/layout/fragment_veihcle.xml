@@ -14,10 +14,10 @@
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:text="INSERIR VEICULO(PLACA)"
+        android:text="@string/inserirVeiculo"
         android:layout_gravity="center"/>
 
         <TextView
@@ -25,10 +25,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:textColor="@color/black"
-        android:text="Veiculo(Placa)" />
+        android:text="@string/inserirTipoVeiculo" />
 
         <EditText
             android:id="@+id/edRenamed"
+            android:autofillHints="name"
+            android:hint="@string/escreva"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -40,25 +43,25 @@
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/Page"
         android:textColor="@color/white"
-        android:text="INSERIR" />
+        android:text="@string/inserir" />
 
         <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ListView
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <ListView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
 
-    </ScrollView>
+            </LinearLayout>
+
+        </ScrollView>
 
         <LinearLayout
         android:layout_width="match_parent"
@@ -72,16 +75,17 @@
             android:backgroundTint="@color/Negacao"
             android:textColor="@color/white"
             android:layout_margin="10dp"
-            android:text="Excluir"/>
+            android:text="@string/excluir"/>
 
         <Button
+            android:id="@+id/btHome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/Afirmacao"
             android:textColor="@color/white"
             android:layout_margin="10dp"
-            android:text="Voltar"/>
+            android:text="@string/voltar"/>
 
         </LinearLayout>
 

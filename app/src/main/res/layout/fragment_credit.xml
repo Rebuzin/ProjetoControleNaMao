@@ -17,16 +17,17 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:text="INSERIR NOVO CRÉDITO" />
+        android:text="@string/credito" />
 
         <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:textColor="@color/black"
-        android:text="Veiculo" />
+        android:text="@string/veiculo" />
 
         <Spinner
+        android:id="@+id/spVeiculos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -35,9 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
-        android:text="Frete" />
+        android:text="@string/frete" />
 
         <Spinner
+        android:id="@+id/spFretes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -46,13 +48,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
-        android:text="Data" />
+        android:text="@string/data" />
 
         <EditText
         android:id="@+id/edDataCredito"
+        android:autofillHints="date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="Insira a Data do Crédito"
+        android:hint="@string/campoData"
         android:inputType="date"/>
 
         <TextView
@@ -60,13 +63,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
-        android:text="Valor" />
+        android:text="@string/valor" />
 
         <EditText
         android:id="@+id/edValorCredito"
+        android:autofillHints="value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Insira o valor do Cédito"
+        android:hint="@string/inserirCredito"
         android:inputType="number"/>
 
         <Button
@@ -78,11 +82,11 @@
         android:backgroundTint="@color/Page"
         android:textColor="@color/white"
         android:layout_gravity="center"
-        android:text="INSERIR" />
+        android:text="@string/inserir" />
 
         <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <LinearLayout
@@ -110,16 +114,17 @@
                 android:backgroundTint="@color/Negacao"
                 android:textColor="@color/white"
                 android:layout_margin="10dp"
-                android:text="Excluir"/>
+                android:text="@string/excluir"/>
 
             <Button
+                android:id="@+id/btHome"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/Afirmacao"
                 android:textColor="@color/white"
                 android:layout_margin="10dp"
-                android:text="Voltar"/>
+                android:text="@string/voltar"/>
 
         </LinearLayout>
 

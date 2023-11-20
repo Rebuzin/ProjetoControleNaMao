@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="176dp"
     android:background="@color/Page"
@@ -10,6 +9,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
+        android:contentDescription="@string/nameEmpresa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/nav_logo" />
@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mamore Transportes"
+        android:text="@string/nameEmpresa"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Contato (45) 9 9853-3768"
+        android:text="@string/contato"
         android:textColor="@color/white"
         android:textSize="14sp" />
 

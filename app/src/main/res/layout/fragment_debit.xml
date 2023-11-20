@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.controlenamao.DebitFragment">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,19 +14,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:text="INSERIR NOVO DÉBITO" />
+            android:text="@string/debito" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:textColor="@color/black"
-            android:text="Veiculo" />
+            android:text="@string/veiculo" />
 
         <Spinner
+            android:id="@+id/spVeiculos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -35,9 +36,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
-            android:text="Serviço/Componente" />
+            android:text="@string/servicoComponente" />
 
         <Spinner
+            android:id="@+id/spServicos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -46,10 +48,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
-            android:text="Data" />
+            android:text="@string/data" />
 
         <EditText
             android:id="@+id/edDataDebito"
+            android:hint="@string/campoData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType=""/>
@@ -59,13 +62,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textColor="@color/black"
-            android:text="Valor" />
+            android:text="@string/valor" />
 
         <EditText
             android:id="@+id/edValorDebito"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Insira o valor do Débito"
+            android:hint="@string/inserirDebito"
             android:inputType="number"/>
 
         <Button
@@ -77,11 +80,11 @@
             android:backgroundTint="@color/Page"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:text="INSERIR" />
+            android:text="@string/inserir" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -109,16 +112,17 @@
                 android:backgroundTint="@color/Negacao"
                 android:textColor="@color/white"
                 android:layout_margin="10dp"
-                android:text="Excluir"/>
+                android:text="@string/excluir"/>
 
             <Button
+                android:id="@+id/btHome"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/Afirmacao"
                 android:textColor="@color/white"
                 android:layout_margin="10dp"
-                android:text="Voltar"/>
+                android:text="@string/voltar"/>
 
         </LinearLayout>
 

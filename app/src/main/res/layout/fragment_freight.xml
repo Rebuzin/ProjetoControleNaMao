@@ -14,20 +14,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:text="INSERIR NOVO TIPO DE FRETE" />
+            android:text="@string/inserirFrete" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:textColor="@color/black"
-            android:text="Frete (Ex: Graneleiro, mudança, etc)" />
+            android:text="@string/inserirTipoFrete" />
 
         <EditText
             android:id="@+id/edFreight"
+            android:autofillHints="name"
+            android:hint="@string/escreva"
+            android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -38,11 +41,11 @@
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/Page"
             android:textColor="@color/white"
-            android:text="INSERIR" />
+            android:text="@string/inserir" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1">
 
             <LinearLayout
@@ -70,16 +73,17 @@
                 android:backgroundTint="@color/Negacao"
                 android:textColor="@color/white"
                 android:layout_margin="10dp"
-                android:text="Desativar"/>
+                android:text="@string/desativar"/>
 
             <Button
+                android:id="@+id/btHome"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/Afirmacao"
                 android:textColor="@color/white"
                 android:layout_margin="10dp"
-                android:text="Voltar"/>
+                android:text="@string/voltar"/>
 
         </LinearLayout>
 

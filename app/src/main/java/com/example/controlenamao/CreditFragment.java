@@ -9,10 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.CreditoController;
+import com.example.controlenamao.controller.VeiculoController;
+import com.example.controlenamao.masks.MaskedData;
+import com.example.controlenamao.model.Veiculo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CreditFragment extends Fragment {
@@ -21,12 +27,18 @@ public class CreditFragment extends Fragment {
     private EditText edDataCredito;
     private Button btCadastroCredito;
     private CreditoController creditocontroller;
+    private Spinner spinnerVeiculos;
+    private EditText editTextDtCredito;
+
+    private ArrayList<Veiculo> listaVeiculos;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        creditocontroller = new CreditoController(getContext());
+//        creditocontroller = new CreditoController(getContext());
+//        VeiculoController ec = new VeiculoController(this.getContext());
+//        listaVeiculos = ec.retornarTodosVeiculos();
     }
 
     @Override
@@ -35,6 +47,10 @@ public class CreditFragment extends Fragment {
         btCadastroCredito = getView().findViewById(R.id.btCadastroCredito);
         edValorCredito = getView().findViewById(R.id.edValorCredito);
         edDataCredito = getView().findViewById(R.id.edDataCredito);
+        spinnerVeiculos = getView().findViewById(R.id.spVeiculos);
+
+//            com problema
+//        MaskedData.addDateMask(editTextDtCredito);
 
         btCadastroCredito.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +58,12 @@ public class CreditFragment extends Fragment {
                 salvarCredito();
             }
         });
+
+        //com problema todo
+
+//        VeiculoAdapter adapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinnerVeiculos.setAdapter(adapter);
     }
 
     @Override

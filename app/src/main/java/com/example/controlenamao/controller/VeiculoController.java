@@ -3,6 +3,7 @@ package com.example.controlenamao.controller;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.controlenamao.CreditFragment;
 import com.example.controlenamao.dao.VeiculoDao;
 import com.example.controlenamao.model.Veiculo;
 
@@ -14,6 +15,10 @@ public class VeiculoController {
 
     public VeiculoController(Context context) {
         this.context = context;
+    }
+
+    //todo
+    public VeiculoController(CreditFragment creditFragment) {
     }
 
     public long salvarVeiculo(String renamed){

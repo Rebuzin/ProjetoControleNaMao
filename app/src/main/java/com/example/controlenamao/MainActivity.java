@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
+
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new MainHomeFragment()).commit();
                 break;
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_logout:
                 Toast.makeText(this, "Sair!", Toast.LENGTH_SHORT).show();
+                finishAffinity();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

@@ -14,6 +14,42 @@
     <string name="open_nav">Open Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
 
+    <!--CAMPO DATA-->
+    <string name="campoData">dd/mm/yyyy</string>
+    <string name="data">Data</string>
+
+    <!--CAMPO TEXTO-->
+    <string name="escreva">Escreva aqui</string>
+
+    <!--INSERIR-->
+    <string name="inserir">INSERIR</string>
+
+    <string name="inserirGasto">INSERIR NOVO TIPO DE GASTO</string>
+    <string name="inserirServico">Serviço/Componente</string>
+
+    <string name="inserirFrete">INSERIR NOVO TIPO DE FRETE</string>
+    <string name="inserirTipoFrete">Frete (Ex: Graneleiro, mudança, etc)</string>
+    <string name="frete">Frete</string>
+
+    <string name="credito">INSERIR NOVO CRÉDITO</string>
+    <string name="inserirCredito">Insira o valor do Crédito</string>
+
+    <string name="debito">INSERIR NOVO DÉBITO</string>
+
+    <string name="valor">Valor</string>
+
+    <string name="inserirVeiculo">INSERIR NOVO VEICULO</string>
+    <string name="inserirTipoVeiculo">Veiculo(Placa)</string>
+    <string name="veiculo">Veiculo(Placa)</string>
+
+    <!--DESATIVAR ITEM-->
+    <string name="desativar">Desativar</string>
+
+    <!--EXCLUIR ITEM-->
+    <string name="excluir">Excluir</string>
+
+    <!--VOLTAR HOME-->
+    <string name="voltar">Voltar</string>
 
     <!--SOBRE NOS-->
     <string name="aboutPt1">Nós somos uma empresa formada atualmente por 4 funcionarios (3 motoristas e 1 auxiliar administrativo) e 2 sócios"
@@ -27,7 +63,9 @@
 
     <string name="aboutPt4">Nosso objetivo de futuro é dar a devida oportunidade para as pessoas sempre tratando elas com respeito e cordialidade até mesmo pois sabemos a vivência da profissão
     </string>
-
+    <string name="servicoComponente">Serviço/Componente</string>
+    <string name="inserirDebito">Insira o valor do Débito</string>
+    <string name="contato">Contato (45) 9 9853-3768</string>
 
 
 </resources>
