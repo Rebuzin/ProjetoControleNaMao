@@ -2,7 +2,7 @@ package com.example.controlenamao.model;
 
 public class Veiculo {
 
-    public String renamed;
+    private String renamed;
 
     public Veiculo() {
     }

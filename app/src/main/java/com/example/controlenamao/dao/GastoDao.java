@@ -2,12 +2,14 @@ package com.example.controlenamao.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.controlenamao.helper.SQLiteDataHelper;
+import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Gasto;
 
 import java.util.ArrayList;
@@ -79,7 +81,23 @@ public class GastoDao implements GenericDao<Gasto> {
 
     @Override
     public ArrayList<Gasto> getAll() {
-        return null;
+        ArrayList<Gasto> lista = new ArrayList<>();
+        try {
+            Cursor cursor = bd.query(tableName, colunas,
+                    null, null,
+                    null, null, "NAME");
+            if (cursor.moveToFirst()) {
+                do {
+                    Gasto gasto = new Gasto();
+                    gasto.setName(cursor.getString(0));
+
+                    lista.add(gasto);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException ex) {
+            Log.e("ERRO", "GastoDao.getAll(): " + ex.getMessage());
+        }
+        return lista;
     }
 
     @Override

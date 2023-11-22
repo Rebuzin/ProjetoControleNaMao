@@ -53,17 +53,13 @@ public class CreditoController{
 
         String mensagem = "";
 
-        if(String.valueOf(valor) == null || String.valueOf(valor).isEmpty() || valor == "0"){
-            mensagem += "O valor do credito deve ser preenchido!!\n";
+        if(String.valueOf(data) == null || String.valueOf(data).isEmpty() || data == "0"){
+            mensagem += "A data deve ser preenchida!!\n";
             return mensagem;
-        }else{
-            Toast.makeText(context, String.valueOf(valor), Toast.LENGTH_SHORT).show();
         }
-        if(String.valueOf(data) == null || String.valueOf(data).isEmpty() || valor == "0"){
-            mensagem += "A data do credito deve ser preenchida!!\n";
+        if(String.valueOf(valor) == null || String.valueOf(valor).isEmpty() || valor == "0"){
+            mensagem += "O valor deve ser preenchido!\n";
             return mensagem;
-        }else{
-            Toast.makeText(context, String.valueOf(data), Toast.LENGTH_SHORT).show();
         }
         return mensagem;
     }

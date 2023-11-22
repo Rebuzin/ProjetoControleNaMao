@@ -2,6 +2,7 @@ package com.example.controlenamao.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,10 +10,11 @@ import android.util.Log;
 
 import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Frete;
+import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
 
-public class FreteDao implements GenericDao<Frete> {
+public class  FreteDao implements GenericDao<Frete> {
 
     //abrir a conexão com a BD
     private SQLiteOpenHelper openHelper;
@@ -79,7 +81,23 @@ public class FreteDao implements GenericDao<Frete> {
 
     @Override
     public ArrayList<Frete> getAll() {
-        return null;
+        ArrayList<Frete> lista = new ArrayList<>();
+        try {
+            Cursor cursor = bd.query(tableName, colunas,
+                    null, null,
+                    null, null, "NAME");
+            if (cursor.moveToFirst()) {
+                do {
+                    Frete frete = new Frete();
+                    frete.setName(cursor.getString(0));
+
+                    lista.add(frete);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException ex) {
+            Log.e("ERRO", "FreteDao.getAll(): " + ex.getMessage());
+        }
+        return lista;
     }
 
     @Override

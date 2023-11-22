@@ -27,7 +27,7 @@
             android:text="@string/veiculo" />
 
         <Spinner
-            android:id="@+id/spVeiculos"
+            android:id="@+id/spVeiculosDebit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -39,7 +39,7 @@
             android:text="@string/servicoComponente" />
 
         <Spinner
-            android:id="@+id/spServicos"
+            android:id="@+id/spGastos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

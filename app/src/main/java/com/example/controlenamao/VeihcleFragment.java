@@ -1,5 +1,6 @@
 package com.example.controlenamao;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ public class VeihcleFragment extends Fragment {
 
     private EditText edRenamed;
     private Button btCadastroVeiculo;
+    private Button btHome;
     private VeiculoController veiculocontroller;
 
     @Override
@@ -32,6 +34,7 @@ public class VeihcleFragment extends Fragment {
 
         btCadastroVeiculo = getView().findViewById(R.id.btCadastroVeiculo);
         edRenamed = getView().findViewById(R.id.edRenamed);
+        btHome = getView().findViewById(R.id.btHome);
 
         btCadastroVeiculo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +42,18 @@ public class VeihcleFragment extends Fragment {
                 salvarVeiculo();
             }
         });
+
+//        PRE IMPLEMENTAÇÃO DE BOTÃO VOLTAR
+
+//        btHome.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                replace(R.id.lnTeste, new MainHomeFragment()).commit();
+//                Intent intent = new Intent(this, getView(R.id.lnTeste, new MainHomeFragment());
+//                startActivity(intent);
+//                beginTransaction().replace().commit();
+//            }
+//        });
     }
 
     @Override
@@ -49,6 +64,13 @@ public class VeihcleFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_veihcle, container, false);
 
     }
+
+//    private void voltarHome(){
+//        Intent intent = new Intent(this,
+//                getActivity(MainHomeFragment));
+//
+//        startActivity(intent);
+//    }
 
     private void salvarVeiculo() {
         String validacao = veiculocontroller.validaVeiculo(

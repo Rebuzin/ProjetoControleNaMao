@@ -2,6 +2,7 @@ package com.example.controlenamao.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -79,7 +80,23 @@ public class VeiculoDao implements GenericDao<Veiculo> {
 
     @Override
     public ArrayList<Veiculo> getAll() {
-        return null;
+        ArrayList<Veiculo> lista = new ArrayList<>();
+        try {
+            Cursor cursor = bd.query(tableName, colunas,
+                    null, null,
+                    null, null, "RENAMED");
+            if (cursor.moveToFirst()) {
+                do {
+                    Veiculo veiculo = new Veiculo();
+                    veiculo.setRenamed(cursor.getString(0));
+
+                    lista.add(veiculo);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException ex) {
+            Log.e("ERRO", "VeiculoDao.getAll(): " + ex.getMessage());
+        }
+        return lista;
     }
 
     @Override

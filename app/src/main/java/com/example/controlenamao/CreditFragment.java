@@ -12,10 +12,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.controlenamao.Adapter.FreteAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.CreditoController;
+import com.example.controlenamao.controller.FreteController;
 import com.example.controlenamao.controller.VeiculoController;
 import com.example.controlenamao.masks.MaskedData;
+import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
@@ -28,29 +31,40 @@ public class CreditFragment extends Fragment {
     private Button btCadastroCredito;
     private CreditoController creditocontroller;
     private Spinner spinnerVeiculos;
-    private EditText editTextDtCredito;
+    private Spinner spinnerFretes;
 
     private ArrayList<Veiculo> listaVeiculos;
+    private ArrayList<Frete> listaFretes;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-//        creditocontroller = new CreditoController(getContext());
-//        VeiculoController ec = new VeiculoController(this.getContext());
-//        listaVeiculos = ec.retornarTodosVeiculos();
-    }
+    private VeiculoController vc;
+    private FreteController fc;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        creditocontroller = new CreditoController(getContext());
 
         btCadastroCredito = getView().findViewById(R.id.btCadastroCredito);
         edValorCredito = getView().findViewById(R.id.edValorCredito);
         edDataCredito = getView().findViewById(R.id.edDataCredito);
         spinnerVeiculos = getView().findViewById(R.id.spVeiculos);
+        spinnerFretes = getView().findViewById(R.id.spFretes);
 
-//            com problema
-//        MaskedData.addDateMask(editTextDtCredito);
+        spinnerVeiculos = getActivity().findViewById(R.id.spVeiculos);
+        spinnerFretes = getActivity().findViewById(R.id.spFretes);
+        vc =  new VeiculoController(getContext());
+        fc =  new FreteController(getContext());
+        listaVeiculos = vc.retornarTodosVeiculos();
+        listaFretes = fc.retornarTodosFretes();
+        VeiculoAdapter vcAdapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
+        FreteAdapter fcAdapter = new FreteAdapter(this.getContext(), listaFretes);
+        vcAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        fcAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerVeiculos.setAdapter(vcAdapter);
+        spinnerFretes.setAdapter(fcAdapter);
+
+//      Máscara para o campo data
+        MaskedData.addDateMask(edDataCredito);
 
         btCadastroCredito.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,12 +72,6 @@ public class CreditFragment extends Fragment {
                 salvarCredito();
             }
         });
-
-        //com problema todo
-
-//        VeiculoAdapter adapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerVeiculos.setAdapter(adapter);
     }
 
     @Override
@@ -77,34 +85,49 @@ public class CreditFragment extends Fragment {
 
     private void salvarCredito() {
 
-        //Se vir em branco assume como zero
-        String valorNumerico = edValorCredito.getText() != null && !edValorCredito.getText().toString().isEmpty() ? edValorCredito.getText().toString() : "0";
-        String valorData = edDataCredito.getText() != null && !edDataCredito.getText().toString().isEmpty() ? edDataCredito.getText().toString() : "";
+        try {
 
-        String validacao = creditocontroller.validaCredito(
-                valorNumerico,
-                valorData);
+            //Se vir em branco assume como zero
+            String valorNumerico = edValorCredito.getText() != null && !edValorCredito.getText().toString().isEmpty() ? edValorCredito.getText().toString() : "0";
+            String valorData = edDataCredito.getText() != null && !edDataCredito.getText().toString().isEmpty() ? edDataCredito.getText().toString() : "";
 
-        if (!validacao.equals("")) {
-            if (validacao.contains("data")) {
-                edDataCredito.setError(validacao);
-            }else if(validacao.contains("credito")){
-                edValorCredito.setError(validacao);
-            }
-        } else {
+            String validacao = creditocontroller.validaCredito(
+                    valorNumerico,
+                    valorData);
 
-            Double valor = Double.parseDouble(valorNumerico);
-            Date data = new Date(valorData);
+            if (!validacao.equals("")) {
+                if (validacao.contains("data")) {
 
-            if (creditocontroller.salvarCredito(valor, data) > 0) {
-                Toast.makeText(getContext(),
-                        "Credito cadastrado com sucesso!!",
-                        Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),
+                            validacao,
+                            Toast.LENGTH_LONG).show();
+
+//                    edDataCredito.setError(validacao);
+                } else if (validacao.contains("valor")) {
+
+                    Toast.makeText(getContext(),
+                            validacao,
+                            Toast.LENGTH_LONG).show();
+
+//                    edValorCredito.setError(validacao);
+                }
             } else {
-                Toast.makeText(getContext(),
-                        "Erro ao cadastrar Credito, verifique LOG.",
-                        Toast.LENGTH_LONG).show();
+
+                Double valor = Double.parseDouble(valorNumerico);
+                Date data = new Date(valorData);
+
+                if (creditocontroller.salvarCredito(valor, data) > 0) {
+                    Toast.makeText(getContext(),
+                            "Credito cadastrado com sucesso!!",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(),
+                            "Erro ao cadastrar Credito, verifique LOG.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
