@@ -101,7 +101,7 @@ public class DebitFragment extends Fragment {
                     Toast.makeText(getContext(),
                             validacao,
                             Toast.LENGTH_LONG).show();
-                    
+
                 } else if (validacao.contains("valor")) {
 
                     Toast.makeText(getContext(),

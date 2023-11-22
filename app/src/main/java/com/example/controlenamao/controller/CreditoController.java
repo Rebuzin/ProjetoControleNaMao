@@ -49,10 +49,14 @@ public class CreditoController{
         return CreditoDao.getInstancia(context).getById(ra);
     }
 
-    public String validaCredito(String valor, String data){
+    public String validaCredito(String valor, String data, String veiculo){
 
         String mensagem = "";
 
+        if(String.valueOf(veiculo) == null || String.valueOf(veiculo).isEmpty() || veiculo == "0"){
+            mensagem += "Deve ser cadastrado um veiculo!!\n";
+            return mensagem;
+        }
         if(String.valueOf(data) == null || String.valueOf(data).isEmpty() || data == "0"){
             mensagem += "A data deve ser preenchida!!\n";
             return mensagem;
