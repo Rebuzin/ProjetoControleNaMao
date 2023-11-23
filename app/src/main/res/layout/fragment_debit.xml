@@ -52,10 +52,11 @@
 
         <EditText
             android:id="@+id/edDataDebito"
+            android:autofillHints="date"
             android:hint="@string/campoData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType=""/>
+            android:inputType="date"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -66,6 +67,7 @@
 
         <EditText
             android:id="@+id/edValorDebito"
+            android:autofillHints="value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/inserirDebito"

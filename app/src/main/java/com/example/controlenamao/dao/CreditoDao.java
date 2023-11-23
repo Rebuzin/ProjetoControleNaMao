@@ -2,6 +2,7 @@ package com.example.controlenamao.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,6 +10,7 @@ import android.util.Log;
 
 import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Credito;
+import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
 
@@ -85,6 +87,23 @@ public class CreditoDao implements GenericDao<Credito> {
 
     @Override
     public Credito getById(int id) {
+        //TENTATIVA DE RETORNAR CREDITO POR ID / PRECISA SER VERIFICADO COMO PUXAR DADOS DE OUTROS DAO'S TAMBÉM
+//        ArrayList<Credito> Credito = new ArrayList<>();
+//        try {
+//            Cursor cursor = bd.query(tableName, colunas,
+//                    null, null,
+//                    null, null, "VALOR");
+//            if (cursor.moveToFirst()) {
+//                do {
+//                    Credito Credito = new Credito();
+//                    Credito.setValor(cursor.getString(0));
+//
+//                    lista.add(credito);
+//                } while (cursor.moveToNext());
+//            }
+//        } catch (SQLException ex) {
+//            Log.e("ERRO", "CreditoDao.getAll(): " + ex.getMessage());
+//        }
         return null;
     }
 }
