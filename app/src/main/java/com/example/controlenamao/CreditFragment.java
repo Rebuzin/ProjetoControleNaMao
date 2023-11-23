@@ -90,20 +90,18 @@ public class CreditFragment extends Fragment {
             //Se vir em branco assume como zero
             String valorNumerico = edValorCredito.getText() != null && !edValorCredito.getText().toString().isEmpty() ? edValorCredito.getText().toString() : "0";
             String valorData = edDataCredito.getText() != null && !edDataCredito.getText().toString().isEmpty() ? edDataCredito.getText().toString() : "";
-            String valorVeiculo = "0";
+            Veiculo veiculo = null;
 
             //Validação para spinner veiculos(sem testar, mas não quebra)
-            if (spinnerVeiculos.getSelectedItem() == null) {
-                valorVeiculo = "0";
-            } else{
-                valorVeiculo = spinnerVeiculos.getSelectedItem().toString();
+            if (spinnerVeiculos.getSelectedItem() != null) {
+                veiculo = (Veiculo) spinnerVeiculos.getSelectedItem();
             }
 
 
             String validacao = creditocontroller.validaCredito(
                     valorNumerico,
                     valorData,
-                    valorVeiculo);
+                    veiculo);
 
             if (!validacao.equals("")) {
                 if (validacao.contains("data")) {
@@ -127,20 +125,20 @@ public class CreditFragment extends Fragment {
                             Toast.LENGTH_LONG).show();
 
 //                    edValorCredito.setError(validacao);
+                }
+            } else {
+
+                Double valor = Double.parseDouble(valorNumerico);
+                Date data = new Date(valorData);
+
+                if (creditocontroller.salvarCredito(valor, data) > 0) {
+                    Toast.makeText(getContext(),
+                            "Credito cadastrado com sucesso!!",
+                            Toast.LENGTH_LONG).show();
                 } else {
-
-                    Double valor = Double.parseDouble(valorNumerico);
-                    Date data = new Date(valorData);
-
-                    if (creditocontroller.salvarCredito(valor, data) > 0) {
-                        Toast.makeText(getContext(),
-                                "Credito cadastrado com sucesso!!",
-                                Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getContext(),
-                                "Erro ao cadastrar Credito, verifique LOG.",
-                                Toast.LENGTH_LONG).show();
-                    }
+                    Toast.makeText(getContext(),
+                            "Erro ao cadastrar Credito, verifique LOG.",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         } catch (Exception e) {

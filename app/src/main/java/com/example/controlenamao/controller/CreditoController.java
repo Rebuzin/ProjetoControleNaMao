@@ -14,6 +14,7 @@ import com.example.controlenamao.dao.GenericDao;
 import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Credito;
 import com.example.controlenamao.model.Credito;
+import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -49,11 +50,11 @@ public class CreditoController{
         return CreditoDao.getInstancia(context).getById(ra);
     }
 
-    public String validaCredito(String valor, String data, String veiculo){
+    public String validaCredito(String valor, String data, Veiculo veiculo){
 
         String mensagem = "";
 
-        if(String.valueOf(veiculo) == null || String.valueOf(veiculo).isEmpty() || veiculo == "0"){
+        if(veiculo == null){
             mensagem += "Deve ser cadastrado um veiculo!!\n";
             return mensagem;
         }
