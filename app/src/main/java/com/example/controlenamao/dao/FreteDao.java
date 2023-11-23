@@ -23,7 +23,7 @@ public class  FreteDao implements GenericDao<Frete> {
     private SQLiteDatabase bd;
 
     //Nome das colunas da tabela
-    private String[]colunas = {"NAME"};
+    private String[]colunas = {"ID, NAME"};
 
     //Nome da tabela
     private String tableName = "FRETE";
@@ -89,7 +89,8 @@ public class  FreteDao implements GenericDao<Frete> {
             if (cursor.moveToFirst()) {
                 do {
                     Frete frete = new Frete();
-                    frete.setName(cursor.getString(0));
+                    frete.setId(cursor.getInt(0));
+                    frete.setName(cursor.getString(1));
 
                     lista.add(frete);
                 } while (cursor.moveToNext());

@@ -97,41 +97,32 @@ public class CreditFragment extends Fragment {
                 veiculo = (Veiculo) spinnerVeiculos.getSelectedItem();
             }
 
+            Frete frete = null;
+
+            //Validação para spinner veiculos(sem testar, mas não quebra)
+            if (spinnerFretes.getSelectedItem() != null) {
+                frete = (Frete) spinnerFretes.getSelectedItem();
+            }
+
 
             String validacao = creditocontroller.validaCredito(
                     valorNumerico,
                     valorData,
-                    veiculo);
+                    veiculo,
+                    frete);
 
             if (!validacao.equals("")) {
-                if (validacao.contains("data")) {
 
                     Toast.makeText(getContext(),
                             validacao,
                             Toast.LENGTH_LONG).show();
 
-//                    edDataCredito.setError(validacao);
-                } else if (validacao.contains("valor")) {
-
-                    Toast.makeText(getContext(),
-                            validacao,
-                            Toast.LENGTH_LONG).show();
-
-//                    edValorCredito.setError(validacao);
-                } else if (validacao.contains("veiculo")) {
-
-                    Toast.makeText(getContext(),
-                            validacao,
-                            Toast.LENGTH_LONG).show();
-
-//                    edValorCredito.setError(validacao);
-                }
             } else {
 
                 Double valor = Double.parseDouble(valorNumerico);
                 Date data = new Date(valorData);
 
-                if (creditocontroller.salvarCredito(valor, data) > 0) {
+                if (creditocontroller.salvarCredito(valor, data, veiculo, frete) > 0) {
                     Toast.makeText(getContext(),
                             "Credito cadastrado com sucesso!!",
                             Toast.LENGTH_LONG).show();

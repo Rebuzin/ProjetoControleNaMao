@@ -22,7 +22,7 @@ public class VeiculoDao implements GenericDao<Veiculo> {
     private SQLiteDatabase bd;
 
     //Nome das colunas da tabela
-    private String[]colunas = {"RENAMED"};
+    private String[]colunas = {"ID, RENAMED"};
 
     //Nome da tabela
     private String tableName = "VEICULO";
@@ -57,6 +57,7 @@ public class VeiculoDao implements GenericDao<Veiculo> {
     public long insert(Veiculo obj) {
         try{
             ContentValues valores = new ContentValues();
+//            valores.put("ID", obj.getId());
             valores.put("RENAMED", obj.getRenamed());
 
             //metodo para inserir na tabela (<nome da tabela>, <coluna especifica que queira inserir>, <dados>)
@@ -88,7 +89,8 @@ public class VeiculoDao implements GenericDao<Veiculo> {
             if (cursor.moveToFirst()) {
                 do {
                     Veiculo veiculo = new Veiculo();
-                    veiculo.setRenamed(cursor.getString(0));
+                    veiculo.setId(cursor.getInt(0));
+                    veiculo.setRenamed(cursor.getString(1));
 
                     lista.add(veiculo);
                 } while (cursor.moveToNext());

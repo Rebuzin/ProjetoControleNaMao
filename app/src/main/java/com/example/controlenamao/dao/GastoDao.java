@@ -23,7 +23,7 @@ public class GastoDao implements GenericDao<Gasto> {
     private SQLiteDatabase bd;
 
     //Nome das colunas da tabela
-    private String[]colunas = {"NAME"};
+    private String[]colunas = {"ID, NAME"};
 
     //Nome da tabela
     private String tableName = "GASTO";
@@ -89,7 +89,8 @@ public class GastoDao implements GenericDao<Gasto> {
             if (cursor.moveToFirst()) {
                 do {
                     Gasto gasto = new Gasto();
-                    gasto.setName(cursor.getString(0));
+                    gasto.setId(cursor.getInt(0));
+                    gasto.setName(cursor.getString(1));
 
                     lista.add(gasto);
                 } while (cursor.moveToNext());

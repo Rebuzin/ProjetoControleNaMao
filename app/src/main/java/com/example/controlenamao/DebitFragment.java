@@ -18,6 +18,7 @@ import com.example.controlenamao.controller.DebitoController;
 import com.example.controlenamao.controller.GastoController;
 import com.example.controlenamao.controller.VeiculoController;
 import com.example.controlenamao.masks.MaskedData;
+import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Veiculo;
 
@@ -90,30 +91,36 @@ public class DebitFragment extends Fragment {
             //Se vir em branco assume como zero
             String valorNumerico = edValorDebito.getText() != null && !edValorDebito.getText().toString().isEmpty() ? edValorDebito.getText().toString() : "0";
             String valorData = edDataDebito.getText() != null && !edDataDebito.getText().toString().isEmpty() ? edDataDebito.getText().toString() : "";
+            Veiculo veiculo = null;
+
+            //Validação para spinner veiculos(sem testar, mas não quebra)
+            if (spinnerVeiculos.getSelectedItem() != null) {
+                veiculo = (Veiculo) spinnerVeiculos.getSelectedItem();
+            }
+
+            Gasto gasto = null;
+
+            //Validação para spinner veiculos(sem testar, mas não quebra)
+            if (spinnerGastos.getSelectedItem() != null) {
+                gasto = (Gasto) spinnerGastos.getSelectedItem();
+            }
 
             String validacao = debitocontroller.validaDebito(
                     valorNumerico,
-                    valorData);
+                    valorData,
+                    veiculo,
+                    gasto);
 
             if (!validacao.equals("")) {
-                if (validacao.contains("data")) {
-
                     Toast.makeText(getContext(),
                             validacao,
                             Toast.LENGTH_LONG).show();
-
-                } else if (validacao.contains("valor")) {
-
-                    Toast.makeText(getContext(),
-                            validacao,
-                            Toast.LENGTH_LONG).show();
-                }
             } else {
 
                 Double valor = Double.parseDouble(valorNumerico);
                 Date data = new Date(valorData);
 
-                if (debitocontroller.salvarDebito(valor, data) > 0) {
+                if (debitocontroller.salvarDebito(valor, data, veiculo, gasto) > 0) {
                     Toast.makeText(getContext(),
                             "Debito cadastrado com sucesso!!",
                             Toast.LENGTH_LONG).show();

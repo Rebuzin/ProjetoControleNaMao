@@ -2,19 +2,17 @@ package com.example.controlenamao.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.controlenamao.helper.SQLiteDataHelper;
-import com.example.controlenamao.model.Credito;
-import com.example.controlenamao.model.Veiculo;
+import com.example.controlenamao.model.Movimentacao;
 
 import java.util.ArrayList;
 
-public class CreditoDao implements GenericDao<Credito> {
+public class MovimentacaoDao implements GenericDao<Movimentacao> {
 
     //abrir a conexão com a BD
     private SQLiteOpenHelper openHelper;
@@ -23,28 +21,28 @@ public class CreditoDao implements GenericDao<Credito> {
     private SQLiteDatabase bd;
 
     //Nome das colunas da tabela
-    private String[]colunas = {"VALOR, DATA"};
+    private String[] colunas = {"VALOR, DATA, TIPO, VEICULO_ID"};
 
     //Nome da tabela
-    private String tableName = "CREDITO";
+    private String tableName = "MOVIMENTACAO";
 
     //Contexto, quem executa
     private Context context;
 
-    private static CreditoDao instancia;
+    private static MovimentacaoDao instancia;
 
     //Metodo que cria a instancia uma unica vez, toda vez que for
     //Necessário utilizar essa classe, retorna sempre a mesma instancia
-    public static CreditoDao getInstancia(Context context) {
+    public static MovimentacaoDao getInstancia(Context context) {
 
-        if(instancia == null)
-            return instancia = new CreditoDao(context);
+        if (instancia == null)
+            return instancia = new MovimentacaoDao(context);
         else
             return instancia;
 
     }
 
-    private CreditoDao(Context context) {
+    private MovimentacaoDao(Context context) {
         this.context = context;
 
         //Carregando base de dados
@@ -55,38 +53,51 @@ public class CreditoDao implements GenericDao<Credito> {
     }
 
     @Override
-    public long insert(Credito obj) {
-        try{
+    public long insert(Movimentacao obj) {
+        try {
             ContentValues valores = new ContentValues();
             valores.put("VALOR", obj.getValor());
             valores.put("DATA", String.valueOf(obj.getData()));
+            valores.put("TIPO", obj.getTipo());
+
+            if (obj.getVeiculo() != null) {
+                valores.put("VEICULO_ID", obj.getVeiculo().getId());
+            }
+
+            if (obj.getFrete() != null) {
+                valores.put("FRETE_ID", obj.getFrete().getId());
+            }
+
+            if (obj.getGasto() != null) {
+                valores.put("GASTO_ID", obj.getGasto().getId());
+            }
 
             //metodo para inserir na tabela (<nome da tabela>, <coluna especifica que queira inserir>, <dados>)
             //retorna a linha que foi inserida na tabela
-            return bd.insert(tableName,null, valores);
-        }catch (SQLException ex){
-            Log.e("ERRO","CreditoDAO.insert(): " + ex.getMessage());
+            return bd.insert(tableName, null, valores);
+        } catch (SQLException ex) {
+            Log.e("ERRO", "MovimentacaoDao.insert(): " + ex.getMessage());
         }
         return -1;
     }
 
     @Override
-    public long update(Credito obj) {
+    public long update(Movimentacao obj) {
         return 0;
     }
 
     @Override
-    public long delete(Credito obj) {
+    public long delete(Movimentacao obj) {
         return 0;
     }
 
     @Override
-    public ArrayList<Credito> getAll() {
+    public ArrayList<Movimentacao> getAll() {
         return null;
     }
 
     @Override
-    public Credito getById(int id) {
+    public Movimentacao getById(int id) {
         //TENTATIVA DE RETORNAR CREDITO POR ID / PRECISA SER VERIFICADO COMO PUXAR DADOS DE OUTROS DAO'S TAMBÉM
 //        ArrayList<Credito> Credito = new ArrayList<>();
 //        try {
@@ -102,7 +113,7 @@ public class CreditoDao implements GenericDao<Credito> {
 //                } while (cursor.moveToNext());
 //            }
 //        } catch (SQLException ex) {
-//            Log.e("ERRO", "CreditoDao.getAll(): " + ex.getMessage());
+//            Log.e("ERRO", "MovimentacaoDao.getAll(): " + ex.getMessage());
 //        }
         return null;
     }

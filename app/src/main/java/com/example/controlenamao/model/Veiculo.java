@@ -2,6 +2,7 @@ package com.example.controlenamao.model;
 
 public class Veiculo {
 
+    private Integer id;
     private String renamed;
 
     public Veiculo() {
@@ -9,6 +10,14 @@ public class Veiculo {
 
     public Veiculo(String renamed) {
         this.renamed = renamed;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getRenamed() {

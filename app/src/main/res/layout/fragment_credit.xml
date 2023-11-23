@@ -17,7 +17,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:text="@string/credito" />
+        android:text="@string/movimentacao" />
 
         <TextView
         android:layout_width="match_parent"

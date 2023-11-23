@@ -31,7 +31,7 @@
     <string name="inserirTipoFrete">Frete (Ex: Graneleiro, mudança, etc)</string>
     <string name="frete">Frete</string>
 
-    <string name="credito">INSERIR NOVO CRÉDITO</string>
+    <string name="movimentacao">INSERIR NOVO CRÉDITO</string>
     <string name="inserirCredito">Insira o valor do Crédito</string>
 
     <string name="debito">INSERIR NOVO DÉBITO</string>
