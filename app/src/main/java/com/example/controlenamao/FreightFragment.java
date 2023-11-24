@@ -10,15 +10,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.controlenamao.Adapter.FreteAdapter;
 import com.example.controlenamao.controller.FreteController;
+import com.example.controlenamao.model.Frete;
+
+import java.util.ArrayList;
 
 public class FreightFragment extends Fragment {
 
     private EditText edFreight;
     private Button btCadastroFrete;
+    private ListView lvFrete;
     private FreteController fretecontroller;
+
+    private FreteController fc;
+    private ArrayList<Frete> listaFretes;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,14 @@ public class FreightFragment extends Fragment {
 
         btCadastroFrete = getView().findViewById(R.id.btCadastroFrete);
         edFreight = getView().findViewById(R.id.edFreight);
+        lvFrete = getView().findViewById(R.id.lvFrete);
+
+        lvFrete = getActivity().findViewById(R.id.lvFrete);
+        fc =  new FreteController(getContext());
+        listaFretes = fc.retornarTodosFretes();
+
+        FreteAdapter fcAdapter = new FreteAdapter(this.getContext(), listaFretes);
+        lvFrete.setAdapter(fcAdapter);
 
         btCadastroFrete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,4 +88,20 @@ public class FreightFragment extends Fragment {
             }
         }
     }
+
+//    private void atualizaLista(){
+//
+//        //buscando lista do sqlite
+//        repositorio.listar(this, info3 -> {
+//
+//            if (Info.TIPO_MSG_SUCCESS.equals(info3.getTipo())) {
+//
+//                listaVeiculo = (ArrayList<Veiculo>)info3.getObjeto();
+//                VeiculoAdapter adapter = new VeiculoAdapter(this, listaVeiculo);
+//                listView.setAdapter(adapter);
+//
+//            }
+//        });
+//
+//    }
 }

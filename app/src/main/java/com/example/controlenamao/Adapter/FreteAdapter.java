@@ -12,6 +12,7 @@ import com.example.controlenamao.model.Frete;
 import java.util.List;
 
 public class FreteAdapter extends ArrayAdapter<Frete> {
+
     public FreteAdapter(Context context, List<Frete> fretes) {
         super(context, 0, fretes);
     }
