@@ -4,9 +4,11 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.example.controlenamao.CreditFragment;
+import com.example.controlenamao.dao.GastoDao;
 import com.example.controlenamao.dao.MovimentacaoDao;
 import com.example.controlenamao.dao.VeiculoDao;
 import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
+import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
@@ -36,10 +38,20 @@ public class HomeController {
         return MovimentacaoDao.getInstancia(context).buscarDebitoEletrico();
     }
 
+    public Double buscarDebitoByGasto(HomeFiltroVo filtro, Gasto gasto){
+        //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
+        return MovimentacaoDao.getInstancia(context).buscarDebitoByGasto(gasto);
+    }
+
 
     public Double buscarCreditosFrete(HomeFiltroVo filtro){
         //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
         return MovimentacaoDao.getInstancia(context).buscarCreditosFrete();
+    }
+
+    public ArrayList<Gasto> buscarTodosGastos(){
+        //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
+        return GastoDao.getInstancia(context).getAll();
     }
 
 }

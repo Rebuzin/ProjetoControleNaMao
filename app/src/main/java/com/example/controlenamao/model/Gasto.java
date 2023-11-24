@@ -8,6 +8,10 @@ public class Gasto {
     public Gasto() {
     }
 
+    public Gasto(Integer id) {
+        this.id = id;
+    }
+
     public Gasto(String name) {
         this.name = name;
     }

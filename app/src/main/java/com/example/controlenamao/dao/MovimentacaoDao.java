@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.controlenamao.helper.SQLiteDataHelper;
+import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;
 
@@ -177,6 +178,30 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
             String sql = "select sum(VALOR) " +
                     "from MOVIMENTACAO " +
                     "where TIPO = 'D' AND GASTO_ID = 3 ;"; //GASTO ID 3 = COMBUSTIVEL DE FORMA FIXA
+
+            Cursor c = bd.rawQuery(sql, null);
+            if (c.moveToFirst()) {
+                valor = c.getDouble(0);
+            } else {
+                valor = 0d;
+            }
+
+            c.close();
+
+        } catch (SQLException ex) {
+            Log.e("ERRO", "MovimentacaoDao.buscaSaldoCombustivel(): " + ex.getMessage());
+        }
+        return valor;
+    }
+
+
+    public Double buscarDebitoByGasto(Gasto gasto) {
+        Double valor = 0d;
+        try {
+
+            String sql = "select sum(VALOR) " +
+                    "from MOVIMENTACAO " +
+                    "where TIPO = 'D' AND GASTO_ID = " + gasto.getId() + " ;"; //GASTO ID 3 = COMBUSTIVEL DE FORMA FIXA
 
             Cursor c = bd.rawQuery(sql, null);
             if (c.moveToFirst()) {
