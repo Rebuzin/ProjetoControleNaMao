@@ -2,6 +2,7 @@ package com.example.controlenamao.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,6 +10,7 @@ import android.util.Log;
 
 import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Movimentacao;
+import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
 
@@ -116,5 +118,101 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
 //            Log.e("ERRO", "MovimentacaoDao.getAll(): " + ex.getMessage());
 //        }
         return null;
+    }
+
+
+    //////////////////////////////
+    //  Busca saldos
+    //////////////////////////////
+    public Double buscarDebitoCombustivel() {
+        Double valor = 0d;
+        try {
+
+            String sql = "select sum(VALOR) " +
+                    "from MOVIMENTACAO " +
+                    "where TIPO = 'D' AND GASTO_ID = 1 ;"; //GASTO ID 1 = COMBUSTIVEL DE FORMA FIXA
+
+            Cursor c = bd.rawQuery(sql, null);
+            if (c.moveToFirst()) {
+                valor = c.getDouble(0);
+            } else {
+                valor = 0d;
+            }
+
+            c.close();
+
+        } catch (SQLException ex) {
+            Log.e("ERRO", "MovimentacaoDao.buscaSaldoCombustivel(): " + ex.getMessage());
+        }
+        return valor;
+    }
+
+    public Double buscarDebitoPneus() {
+        Double valor = 0d;
+        try {
+
+            String sql = "select sum(VALOR) " +
+                    "from MOVIMENTACAO " +
+                    "where TIPO = 'D' AND GASTO_ID = 2 ;"; //GASTO ID  = 2 PNEUS DE FORMA FIXA
+
+            Cursor c = bd.rawQuery(sql, null);
+            if (c.moveToFirst()) {
+                valor = c.getDouble(0);
+            } else {
+                valor = 0d;
+            }
+
+            c.close();
+
+        } catch (SQLException ex) {
+            Log.e("ERRO", "MovimentacaoDao.buscaSaldoCombustivel(): " + ex.getMessage());
+        }
+        return valor;
+    }
+
+    public Double buscarDebitoEletrico() {
+        Double valor = 0d;
+        try {
+
+            String sql = "select sum(VALOR) " +
+                    "from MOVIMENTACAO " +
+                    "where TIPO = 'D' AND GASTO_ID = 3 ;"; //GASTO ID 3 = COMBUSTIVEL DE FORMA FIXA
+
+            Cursor c = bd.rawQuery(sql, null);
+            if (c.moveToFirst()) {
+                valor = c.getDouble(0);
+            } else {
+                valor = 0d;
+            }
+
+            c.close();
+
+        } catch (SQLException ex) {
+            Log.e("ERRO", "MovimentacaoDao.buscaSaldoCombustivel(): " + ex.getMessage());
+        }
+        return valor;
+    }
+
+    public Double buscarCreditosFrete() {
+        Double valor = 0d;
+        try {
+
+            String sql = "select sum(VALOR) " +
+                    "from MOVIMENTACAO " +
+                    "where TIPO = 'C' AND FRETE_ID NOT NULL;"; //Busca todos os creditos de frete
+
+            Cursor c = bd.rawQuery(sql, null);
+            if (c.moveToFirst()) {
+                valor = c.getDouble(0);
+            } else {
+                valor = 0d;
+            }
+
+            c.close();
+
+        } catch (SQLException ex) {
+            Log.e("ERRO", "MovimentacaoDao.buscaSaldoCombustivel(): " + ex.getMessage());
+        }
+        return valor;
     }
 }
