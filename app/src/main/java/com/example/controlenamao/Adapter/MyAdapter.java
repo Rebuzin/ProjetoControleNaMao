@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.controlenamao.CreditFragment;
 import com.example.controlenamao.DebitFragment;
-import com.example.controlenamao.HomeFragment;
+import com.example.controlenamao.FaturamentoFragment;
 
 public class MyAdapter extends FragmentPagerAdapter {
 
@@ -25,7 +25,7 @@ public class MyAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                HomeFragment homeFragment = new HomeFragment();
+                FaturamentoFragment homeFragment = new FaturamentoFragment();
                 return homeFragment;
             case 1:
                 CreditFragment creditFragment = new CreditFragment();

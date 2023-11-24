@@ -10,20 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.controlenamao.Adapter.MyAdapter;
-import com.example.controlenamao.controller.CreditoController;
 import com.example.controlenamao.controller.HomeController;
 import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
 import com.example.controlenamao.model.Gasto;
-import com.google.android.material.tabs.TabLayout;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class HomeFragment extends Fragment {
+public class FaturamentoFragment extends Fragment {
 
     // Create the object of TextView and PieChart class
     TextView tvCombustivel, tvLucroFinal, tvPneus, tvServicoEletrico;
@@ -31,7 +27,7 @@ public class HomeFragment extends Fragment {
     private HomeController controller;
     private String [] colors = new String[10];
 
-    public HomeFragment() {
+    public FaturamentoFragment() {
         // Required empty public constructor
     }
 

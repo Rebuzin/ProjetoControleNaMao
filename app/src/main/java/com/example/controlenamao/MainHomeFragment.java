@@ -23,13 +23,21 @@ public class MainHomeFragment extends Fragment {
     private ViewPager viewPager;
 
     public MainHomeFragment() {
+
         // Required empty public constructor
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        tabLayout = view.findViewById(R.id.tabLayout);
-        viewPager = view.findViewById(R.id.viewPager2);
+        tabLayout = getView().findViewById(R.id.tabLayout);
+        viewPager = getView().findViewById(R.id.viewPager2);
+        tabLayout.removeAllTabs();
 
         atualizaTabs();
 
@@ -42,6 +50,8 @@ public class MainHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main_home, container, false);
 
+
+
     }
 
     public void atualizaTabs(){
@@ -49,9 +59,12 @@ public class MainHomeFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText("Faturamento"));
         tabLayout.addTab(tabLayout.newTab().setText("Crédito"));
         tabLayout.addTab(tabLayout.newTab().setText("Débito"));
-        MyAdapter adapter = new MyAdapter(this.getContext(),
+        final MyAdapter adapter = new MyAdapter(this.getContext(),
                 getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+
         viewPager.setAdapter(adapter);
+
+
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

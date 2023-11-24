@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          *
          * **/
         if(savedInstanceState == null){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.viewPager2, new HomeFragment()).commit();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.viewPager2, new FaturamentoFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
