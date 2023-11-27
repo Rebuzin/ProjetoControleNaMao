@@ -43,17 +43,15 @@ public class VeihcleFragment extends Fragment {
             }
         });
 
-//        PRE IMPLEMENTAÇÃO DE BOTÃO VOLTAR
+//      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
+        btHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-//        btHome.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                replace(R.id.lnTeste, new MainHomeFragment()).commit();
-//                Intent intent = new Intent(this, getView(R.id.lnTeste, new MainHomeFragment());
-//                startActivity(intent);
-//                beginTransaction().replace().commit();
-//            }
-//        });
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -65,12 +63,6 @@ public class VeihcleFragment extends Fragment {
 
     }
 
-//    private void voltarHome(){
-//        Intent intent = new Intent(this,
-//                getActivity(MainHomeFragment));
-//
-//        startActivity(intent);
-//    }
 
     private void salvarVeiculo() {
         String validacao = veiculocontroller.validaVeiculo(
@@ -93,9 +85,4 @@ public class VeihcleFragment extends Fragment {
             }
         }
     }
-
-//    private void voltarHome(){
-//        Intent intent = new Intent(this, Class<MainActivity>);
-//        startActivity(intent);
-//    }
 }

@@ -64,7 +64,7 @@ public class DebitFragment extends Fragment {
         spinnerVeiculos.setAdapter(vcAdapter);
         spinnerGastos.setAdapter(gcAdapter);
 
-//      Máscara para o campo data
+//      MASCÁRA PARA O CAMPO DATA
         MaskedData.addDateMask(edDataDebito);
 
         btCadastroDebito.setOnClickListener(new View.OnClickListener() {
@@ -81,13 +81,11 @@ public class DebitFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_debit, container, false);
-
     }
 
     private void salvarDebito() {
 
         try {
-
             //Se vir em branco assume como zero
             String valorNumerico = edValorDebito.getText() != null && !edValorDebito.getText().toString().isEmpty() ? edValorDebito.getText().toString() : "0";
             String valorData = edDataDebito.getText() != null && !edDataDebito.getText().toString().isEmpty() ? edDataDebito.getText().toString() : "";

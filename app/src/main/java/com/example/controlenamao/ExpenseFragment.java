@@ -1,5 +1,6 @@
 package com.example.controlenamao;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ public class ExpenseFragment extends Fragment {
 
     private EditText edExpense;
     private Button btCadastroGasto;
+    private Button btHome;
     private GastoController gastocontroller;
 
     @Override
@@ -32,12 +34,23 @@ public class ExpenseFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         btCadastroGasto = getView().findViewById(R.id.btCadastroGasto);
+        btHome = getView().findViewById(R.id.btHome);
         edExpense = getView().findViewById(R.id.edExpense);
 
         btCadastroGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 salvarGasto();
+            }
+        });
+
+//      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
+        btHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -48,7 +61,6 @@ public class ExpenseFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_expense, container, false);
-
     }
 
     private void salvarGasto() {

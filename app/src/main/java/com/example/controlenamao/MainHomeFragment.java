@@ -23,7 +23,6 @@ public class MainHomeFragment extends Fragment {
     private ViewPager viewPager;
 
     public MainHomeFragment() {
-
         // Required empty public constructor
     }
 
@@ -42,16 +41,12 @@ public class MainHomeFragment extends Fragment {
         atualizaTabs();
 
         viewPager.setCurrentItem(0);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_main_home, container, false);
-
-
-
     }
 
     public void atualizaTabs(){
@@ -64,8 +59,6 @@ public class MainHomeFragment extends Fragment {
 
         viewPager.setAdapter(adapter);
 
-
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -75,12 +68,10 @@ public class MainHomeFragment extends Fragment {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
     }

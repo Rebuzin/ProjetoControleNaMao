@@ -1,5 +1,6 @@
 package com.example.controlenamao;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -23,6 +24,7 @@ public class FreightFragment extends Fragment {
 
     private EditText edFreight;
     private Button btCadastroFrete;
+    private Button btHome;
     private ListView lvFrete;
     private FreteController fretecontroller;
 
@@ -40,6 +42,7 @@ public class FreightFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         btCadastroFrete = getView().findViewById(R.id.btCadastroFrete);
+        btHome = getView().findViewById(R.id.btHome);
         edFreight = getView().findViewById(R.id.edFreight);
         lvFrete = getView().findViewById(R.id.lvFrete);
 
@@ -56,7 +59,18 @@ public class FreightFragment extends Fragment {
                 salvarFrete();
             }
         });
+
+        //      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
+        btHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,7 +78,6 @@ public class FreightFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_freight, container, false);
-
     }
 
     private void salvarFrete() {

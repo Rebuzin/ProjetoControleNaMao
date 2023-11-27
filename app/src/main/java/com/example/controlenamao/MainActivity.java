@@ -37,14 +37,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         /**
          * Ver o motivo de isso quebrar o layout(sem fica aparentemente certo
+         * "Corrigi" a quebra, mas o problema do layout continua
          *
          * **/
         if(savedInstanceState == null){
-//            getSupportFragmentManager().beginTransaction().replace(R.id.viewPager2, new FaturamentoFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new MainHomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new MainHomeFragment()).commit();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new MainHomeFragment()).commit();
     }
 
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_logout:
-                Toast.makeText(this, "Sair!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Você saiu do aplicativo!", Toast.LENGTH_SHORT).show();
                 finishAffinity();
                 break;
         }

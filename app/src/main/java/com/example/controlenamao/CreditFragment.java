@@ -63,7 +63,7 @@ public class CreditFragment extends Fragment {
         spinnerVeiculos.setAdapter(vcAdapter);
         spinnerFretes.setAdapter(fcAdapter);
 
-//      Máscara para o campo data
+//      MÁSCARA PARA O CAMPO DATA
         MaskedData.addDateMask(edDataCredito);
 
         btCadastroCredito.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +80,6 @@ public class CreditFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_credit, container, false);
-
     }
 
     private void salvarCredito() {

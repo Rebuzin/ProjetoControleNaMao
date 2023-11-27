@@ -46,8 +46,8 @@ public class FaturamentoFragment extends Fragment {
         colors[0] = "#AF4646";
         colors[1] = "#403A3A";
         colors[2] = "#FFC107";
-        colors[3] = "#AF5546";
-        colors[4] = "#FFC205";
+        colors[3] = "#00008B";
+        colors[4] = "#2F4F4F";
 
         setData();
     }

@@ -85,7 +85,8 @@
             android:backgroundTint="@color/Afirmacao"
             android:textColor="@color/white"
             android:layout_margin="10dp"
-            android:text="@string/voltar"/>
+            android:text="@string/voltar"
+            android:onClick="voltarHome"/>
 
         </LinearLayout>
 
