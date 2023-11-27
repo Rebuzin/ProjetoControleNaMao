@@ -15,8 +15,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.controlenamao.Adapter.FreteAdapter;
+import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.FreteController;
 import com.example.controlenamao.model.Frete;
+import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
 
@@ -51,6 +53,7 @@ public class FreightFragment extends Fragment {
         listaFretes = fc.retornarTodosFretes();
 
         FreteAdapter fcAdapter = new FreteAdapter(this.getContext(), listaFretes);
+        fcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         lvFrete.setAdapter(fcAdapter);
 
         btCadastroFrete.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +63,9 @@ public class FreightFragment extends Fragment {
             }
         });
 
-        //      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
+        atualizaLista();
+
+//      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
         btHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +107,9 @@ public class FreightFragment extends Fragment {
         }
     }
 
-//    private void atualizaLista(){
+    private void atualizaLista(){
+        FreteAdapter adapter = new FreteAdapter(this.getContext(), listaFretes);
+        lvFrete.setAdapter(adapter);
 //
 //        //buscando lista do sqlite
 //        repositorio.listar(this, info3 -> {
@@ -116,5 +123,5 @@ public class FreightFragment extends Fragment {
 //            }
 //        });
 //
-//    }
+    }
 }
