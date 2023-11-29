@@ -11,17 +11,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.controlenamao.Adapter.GastoAdapter;
+import com.example.controlenamao.Adapter.GastoAdapter;
 import com.example.controlenamao.controller.GastoController;
 import com.example.controlenamao.controller.GastoController;
+import com.example.controlenamao.controller.GastoController;
+import com.example.controlenamao.model.Gasto;
+import com.example.controlenamao.model.Gasto;
+
+import java.util.ArrayList;
 
 public class ExpenseFragment extends Fragment {
 
     private EditText edExpense;
     private Button btCadastroGasto;
     private Button btHome;
+    private ListView lvGasto;
     private GastoController gastocontroller;
+
+    private GastoController gc;
+    private ArrayList<Gasto> listaGastos;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,12 +49,24 @@ public class ExpenseFragment extends Fragment {
         btHome = getView().findViewById(R.id.btHome);
         edExpense = getView().findViewById(R.id.edExpense);
 
+        lvGasto = getView().findViewById(R.id.lvGasto);
+
+        lvGasto = getActivity().findViewById(R.id.lvGasto);
+        gc =  new GastoController(getContext());
+        listaGastos = gc.retornarTodosGastos();
+
+        GastoAdapter gcAdapter = new GastoAdapter(this.getContext(), listaGastos);
+        gcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        lvGasto.setAdapter(gcAdapter);
+
         btCadastroGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 salvarGasto();
             }
         });
+
+        atualizaLista();
 
 //      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
         btHome.setOnClickListener(new View.OnClickListener() {
@@ -83,5 +107,9 @@ public class ExpenseFragment extends Fragment {
                         Toast.LENGTH_LONG).show();
             }
         }
+    }
+    private void atualizaLista() {
+        GastoAdapter adapter = new GastoAdapter(this.getContext(), listaGastos);
+        lvGasto.setAdapter(adapter);
     }
 }

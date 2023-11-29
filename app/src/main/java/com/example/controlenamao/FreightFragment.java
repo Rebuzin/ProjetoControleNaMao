@@ -96,6 +96,7 @@ public class FreightFragment extends Fragment {
         } else {
             if (fretecontroller.salvarFrete(
                     edFreight.getText().toString()) > 0) {
+
                 Toast.makeText(getContext(),
                         "Frete cadastrado com sucesso!!",
                         Toast.LENGTH_LONG).show();
@@ -105,23 +106,11 @@ public class FreightFragment extends Fragment {
                         Toast.LENGTH_LONG).show();
             }
         }
+        atualizaLista();
     }
 
     private void atualizaLista(){
         FreteAdapter adapter = new FreteAdapter(this.getContext(), listaFretes);
         lvFrete.setAdapter(adapter);
-//
-//        //buscando lista do sqlite
-//        repositorio.listar(this, info3 -> {
-//
-//            if (Info.TIPO_MSG_SUCCESS.equals(info3.getTipo())) {
-//
-//                listaVeiculo = (ArrayList<Veiculo>)info3.getObjeto();
-//                VeiculoAdapter adapter = new VeiculoAdapter(this, listaVeiculo);
-//                listView.setAdapter(adapter);
-//
-//            }
-//        });
-//
     }
 }
