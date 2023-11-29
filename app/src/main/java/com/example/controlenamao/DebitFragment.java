@@ -9,17 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.controlenamao.Adapter.GastoAdapter;
+import com.example.controlenamao.Adapter.MovimentacaoAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
+import com.example.controlenamao.controller.CreditoController;
 import com.example.controlenamao.controller.DebitoController;
 import com.example.controlenamao.controller.GastoController;
 import com.example.controlenamao.controller.VeiculoController;
 import com.example.controlenamao.masks.MaskedData;
 import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Gasto;
+import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
@@ -30,13 +34,16 @@ public class DebitFragment extends Fragment {
     private EditText edValorDebito;
     private EditText edDataDebito;
     private Button btCadastroDebito;
+    private ListView lvDebito;
     private DebitoController debitocontroller;
     private Spinner spinnerVeiculos;
     private Spinner spinnerGastos;
 
     private ArrayList<Veiculo> listaVeiculos;
     private ArrayList<Gasto> listaGastos;
+    private ArrayList<Movimentacao> listaDebito;
 
+    private DebitoController cc;
     private VeiculoController vc;
     private GastoController gc;
 
@@ -63,6 +70,17 @@ public class DebitFragment extends Fragment {
         gcAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerVeiculos.setAdapter(vcAdapter);
         spinnerGastos.setAdapter(gcAdapter);
+
+        lvDebito = getView().findViewById(R.id.lvCredito);
+
+        lvDebito = getActivity().findViewById(R.id.lvCredito);
+        cc =  new DebitoController(getContext());
+        listaDebito = cc.retornarTodosDebitos();
+
+        MovimentacaoAdapter mcAdapter = new MovimentacaoAdapter(this.getContext(), listaDebito);
+        mcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+//        QUEBRANDO
+//        lvDebito.setAdapter(mcAdapter);
 
 //      MASCÁRA PARA O CAMPO DATA
         MaskedData.addDateMask(edDataDebito);

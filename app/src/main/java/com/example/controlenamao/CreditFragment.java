@@ -77,6 +77,7 @@ public class CreditFragment extends Fragment {
 
         MovimentacaoAdapter mcAdapter = new MovimentacaoAdapter(this.getContext(), listaCredito);
         mcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+//        QUEBRANDO
 //        lvCredito.setAdapter(mcAdapter);
 
 //      MÁSCARA PARA O CAMPO DATA
