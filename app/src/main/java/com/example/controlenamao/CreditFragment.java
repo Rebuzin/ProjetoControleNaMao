@@ -9,16 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.controlenamao.Adapter.FreteAdapter;
+import com.example.controlenamao.Adapter.MovimentacaoAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.CreditoController;
 import com.example.controlenamao.controller.FreteController;
 import com.example.controlenamao.controller.VeiculoController;
 import com.example.controlenamao.masks.MaskedData;
 import com.example.controlenamao.model.Frete;
+import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
@@ -29,13 +32,16 @@ public class CreditFragment extends Fragment {
     private EditText edValorCredito;
     private EditText edDataCredito;
     private Button btCadastroCredito;
+    private ListView lvCredito;
     private CreditoController creditocontroller;
     private Spinner spinnerVeiculos;
     private Spinner spinnerFretes;
 
     private ArrayList<Veiculo> listaVeiculos;
     private ArrayList<Frete> listaFretes;
+    private ArrayList<Movimentacao> listaCredito;
 
+    private CreditoController cc;
     private VeiculoController vc;
     private FreteController fc;
 
@@ -62,6 +68,16 @@ public class CreditFragment extends Fragment {
         fcAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerVeiculos.setAdapter(vcAdapter);
         spinnerFretes.setAdapter(fcAdapter);
+
+        lvCredito = getView().findViewById(R.id.lvCredito);
+
+        lvCredito = getActivity().findViewById(R.id.lvCredito);
+        cc =  new CreditoController(getContext());
+        listaCredito = cc.retornarTodosCreditos();
+
+        MovimentacaoAdapter mcAdapter = new MovimentacaoAdapter(this.getContext(), listaCredito);
+        mcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+//        lvCredito.setAdapter(mcAdapter);
 
 //      MÁSCARA PARA O CAMPO DATA
         MaskedData.addDateMask(edDataCredito);
