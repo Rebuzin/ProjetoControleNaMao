@@ -1,6 +1,5 @@
 package com.example.controlenamao;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -13,9 +12,6 @@ import android.view.ViewGroup;
 
 import com.example.controlenamao.Adapter.MyAdapter;
 import com.google.android.material.tabs.TabLayout;
-
-import org.eazegraph.lib.models.PieModel;
-
 
 public class MainHomeFragment extends Fragment {
 

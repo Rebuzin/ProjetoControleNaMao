@@ -1,6 +1,5 @@
 package com.example.controlenamao;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.controlenamao.Adapter.VeiculoAdapter;
-import com.example.controlenamao.Adapter.VeiculoAdapter;
-import com.example.controlenamao.controller.VeiculoController;
 import com.example.controlenamao.controller.VeiculoController;
 import com.example.controlenamao.model.Veiculo;
 
@@ -113,4 +110,5 @@ public class VeihcleFragment extends Fragment {
         VeiculoAdapter adapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
         lvVeiculo.setAdapter(adapter);
     }
+
 }

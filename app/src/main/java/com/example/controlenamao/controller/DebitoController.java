@@ -1,12 +1,8 @@
 package com.example.controlenamao.controller;
 
 import android.content.Context;
-import android.widget.Toast;
 
-import com.example.controlenamao.dao.DebitoDao;
 import com.example.controlenamao.dao.MovimentacaoDao;
-import com.example.controlenamao.model.Debito;
-import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;

@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.controlenamao.helper.SQLiteDataHelper;
-import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Gasto;
 
 import java.util.ArrayList;
@@ -76,7 +75,8 @@ public class GastoDao implements GenericDao<Gasto> {
 
     @Override
     public long delete(Gasto obj) {
-        return 0;
+        String[]identificador = {String.valueOf(obj.getId())};
+        return bd.delete(tableName,"NAME = ?",identificador);
     }
 
     @Override

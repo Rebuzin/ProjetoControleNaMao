@@ -11,7 +11,6 @@ import android.util.Log;
 import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
-import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
 

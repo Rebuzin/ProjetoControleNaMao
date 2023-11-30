@@ -10,9 +10,9 @@ import android.util.Log;
 
 import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Frete;
-import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
+import java.util.jar.Attributes;
 
 public class  FreteDao implements GenericDao<Frete> {
 
@@ -76,7 +76,8 @@ public class  FreteDao implements GenericDao<Frete> {
 
     @Override
     public long delete(Frete obj) {
-        return 0;
+        String[]identificador = {String.valueOf(obj.getId())};
+        return bd.delete(tableName,"NAME = ?",identificador);
     }
 
     @Override

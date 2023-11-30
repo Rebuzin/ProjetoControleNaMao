@@ -1,15 +1,11 @@
 package com.example.controlenamao.controller;
 
 import android.content.Context;
-import android.widget.Toast;
 
-import com.example.controlenamao.CreditFragment;
 import com.example.controlenamao.dao.GastoDao;
 import com.example.controlenamao.dao.MovimentacaoDao;
-import com.example.controlenamao.dao.VeiculoDao;
 import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
 import com.example.controlenamao.model.Gasto;
-import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
 

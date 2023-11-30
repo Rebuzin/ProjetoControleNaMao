@@ -15,11 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.controlenamao.Adapter.GastoAdapter;
-import com.example.controlenamao.Adapter.GastoAdapter;
 import com.example.controlenamao.controller.GastoController;
-import com.example.controlenamao.controller.GastoController;
-import com.example.controlenamao.controller.GastoController;
-import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Gasto;
 
 import java.util.ArrayList;

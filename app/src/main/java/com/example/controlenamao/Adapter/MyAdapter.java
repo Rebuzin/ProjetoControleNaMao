@@ -25,14 +25,11 @@ public class MyAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                FaturamentoFragment homeFragment = new FaturamentoFragment();
-                return homeFragment;
+                return new FaturamentoFragment();
             case 1:
-                CreditFragment creditFragment = new CreditFragment();
-                return creditFragment;
+                return new CreditFragment();
             case 2:
-                DebitFragment debitFragment = new DebitFragment();
-                return debitFragment;
+                return new DebitFragment();
             default:
                 return null;
         }

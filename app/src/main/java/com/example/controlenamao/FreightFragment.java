@@ -15,10 +15,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.controlenamao.Adapter.FreteAdapter;
-import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.FreteController;
 import com.example.controlenamao.model.Frete;
-import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
 
