@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,13 +31,17 @@ public class MainHomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        tabLayout = getView().findViewById(R.id.tabLayout);
-        viewPager = getView().findViewById(R.id.viewPager2);
-        tabLayout.removeAllTabs();
 
-        atualizaTabs();
 
-        viewPager.setCurrentItem(0);
+        if(savedInstanceState == null) {
+            tabLayout = getView().findViewById(R.id.tabLayout1);
+            viewPager = getView().findViewById(R.id.viewPager1);
+            tabLayout.removeAllTabs();
+
+            atualizaTabs();
+
+            viewPager.setCurrentItem(0);
+        }
     }
 
     @Override
@@ -50,12 +55,16 @@ public class MainHomeFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText("Faturamento"));
         tabLayout.addTab(tabLayout.newTab().setText("Crédito"));
         tabLayout.addTab(tabLayout.newTab().setText("Débito"));
+
+        FaturamentoFragment fat = new FaturamentoFragment();
+
         final MyAdapter adapter = new MyAdapter(this.getContext(),
                 getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
 
         viewPager.setAdapter(adapter);
 
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+//        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

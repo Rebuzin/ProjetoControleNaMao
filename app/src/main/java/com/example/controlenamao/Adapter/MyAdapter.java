@@ -14,6 +14,10 @@ public class MyAdapter extends FragmentPagerAdapter {
     private Context myContext;
     int totalTabs;
 
+    FaturamentoFragment fat = new FaturamentoFragment();
+    CreditFragment cred = new CreditFragment();
+    DebitFragment deb = new DebitFragment();
+
     public MyAdapter(Context context, FragmentManager fm, int totalTabs) {
         super(fm);
         myContext = context;
@@ -25,16 +29,16 @@ public class MyAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new FaturamentoFragment();
+                return fat;
             case 1:
-                return new CreditFragment();
+                return cred;
             case 2:
-                return new DebitFragment();
+                return deb;
             default:
-                return null;
+                return fat;
         }
     }
-    // this counts total number of tabs
+
     @Override
     public int getCount() {
         return totalTabs;

@@ -115,15 +115,25 @@ public class FaturamentoFragment extends Fragment {
         int contador = 0;
         for(Gasto gasto : listaGasto){
 
-            Double debitoCombustivel = controller.buscarDebitoByGasto(filtro, gasto);
+            Double valorDebito = controller.buscarDebitoByGasto(filtro, gasto);
+
+            if(contador == 0){
+                tvCombustivel.setText(Double.toString(valorDebito));
+            }
+            if(contador == 1) {
+                tvPneus.setText(Double.toString(valorDebito));
+            }
+            if(contador == 2) {
+                tvServicoEletrico.setText(Double.toString(valorDebito));
+            }
 
             pieChart.addPieSlice(
                     new PieModel(
                             gasto.getName(),
-                            debitoCombustivel.floatValue(),
+                            valorDebito.floatValue(),
                             Color.parseColor(colors[contador])));
 
-            gastosTotais = gastosTotais + debitoCombustivel;
+            gastosTotais = gastosTotais + valorDebito;
 
             contador = contador +1;
 
@@ -133,12 +143,8 @@ public class FaturamentoFragment extends Fragment {
 
          Double lucro = creditosFrete - gastosTotais;
 
-        // Set the percentage of language used
-//        tvCombustivel.setText(Double.toString(debitoCombustivel));
-//        tvPneus.setText(Double.toString(debitoPneus));
-//        tvServicoEletrico.setText(Double.toString(debitoEletrico));
-//
-//        tvLucroFinal.setText(Double.toString(lucro));
+
+        tvLucroFinal.setText(Double.toString(lucro));
 
 
         pieChart.addPieSlice(

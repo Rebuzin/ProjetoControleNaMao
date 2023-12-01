@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawerLayout;
 
+    MainHomeFragment mainHomeFragment = new MainHomeFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          *
          * **/
         if(savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new MainHomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, mainHomeFragment).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
 
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, new MainHomeFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, mainHomeFragment).commit();
                 break;
 
             case R.id.nav_freight:
