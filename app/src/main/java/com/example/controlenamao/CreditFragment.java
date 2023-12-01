@@ -1,5 +1,6 @@
 package com.example.controlenamao;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -32,6 +33,7 @@ public class CreditFragment extends Fragment {
     private EditText edValorCredito;
     private EditText edDataCredito;
     private Button btCadastroCredito;
+    private Button btHome;
     private ListView lvCredito;
     private CreditoController creditocontroller;
     private Spinner spinnerVeiculos;
@@ -55,6 +57,7 @@ public class CreditFragment extends Fragment {
         edDataCredito = getView().findViewById(R.id.edDataCredito);
         spinnerVeiculos = getView().findViewById(R.id.spVeiculos);
         spinnerFretes = getView().findViewById(R.id.spFretes);
+        btHome = getView().findViewById(R.id.btHome);
 
         spinnerVeiculos = getActivity().findViewById(R.id.spVeiculos);
         spinnerFretes = getActivity().findViewById(R.id.spFretes);
@@ -87,6 +90,16 @@ public class CreditFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 salvarCredito();
+            }
+        });
+
+//      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
+        btHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
             }
         });
     }

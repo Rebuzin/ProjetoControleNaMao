@@ -33,6 +33,7 @@ public class MyAdapter extends FragmentPagerAdapter {
             default:
                 return null;
         }
+
     }
     // this counts total number of tabs
     @Override
