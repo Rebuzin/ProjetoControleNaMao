@@ -31,7 +31,7 @@
             android:id="@+id/edRenamed"
             android:autofillHints="name"
             android:hint="@string/escreva"
-            android:inputType="text"
+            android:inputType="textCapCharacters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />

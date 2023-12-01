@@ -2,6 +2,7 @@ package com.example.controlenamao;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.service.autofill.RegexValidator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.VeiculoController;
+import com.example.controlenamao.masks.MaskedData;
+import com.example.controlenamao.masks.MaskedRenamed;
 import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
@@ -53,6 +56,9 @@ public class VeihcleFragment extends Fragment {
         VeiculoAdapter gcAdapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
         gcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         lvVeiculo.setAdapter(gcAdapter);
+
+//        MÁSCARA PARA O CAMPO PLACA
+        MaskedRenamed.addRenamedMask(edRenamed);
 
         btCadastroVeiculo.setOnClickListener(new View.OnClickListener() {
             @Override
