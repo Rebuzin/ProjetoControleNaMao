@@ -1,5 +1,6 @@
 package com.example.controlenamao;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.controlenamao.Adapter.GastoAdapter;
 import com.example.controlenamao.Adapter.MovimentacaoAdapter;
+import com.example.controlenamao.Adapter.MyAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.DebitoController;
 import com.example.controlenamao.controller.GastoController;
@@ -32,6 +34,7 @@ public class DebitFragment extends Fragment {
     private EditText edValorDebito;
     private EditText edDataDebito;
     private Button btCadastroDebito;
+    private Button btHome;
     private ListView lvDebito;
     private DebitoController debitocontroller;
     private Spinner spinnerVeiculos;
@@ -55,6 +58,7 @@ public class DebitFragment extends Fragment {
         edDataDebito = getView().findViewById(R.id.edDataDebito);
         spinnerVeiculos = getView().findViewById(R.id.spVeiculos);
         spinnerGastos = getView().findViewById(R.id.spGastos);
+        btHome = getView().findViewById(R.id.btHome);
 
         spinnerVeiculos = getActivity().findViewById(R.id.spVeiculosDebit);
         spinnerGastos = getActivity().findViewById(R.id.spGastos);
@@ -89,6 +93,17 @@ public class DebitFragment extends Fragment {
                 salvarDebito();
             }
         });
+
+//      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
+        btHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override

@@ -37,6 +37,7 @@ public class MyAdapter extends FragmentPagerAdapter {
             default:
                 return fat;
         }
+
     }
 
     @Override
