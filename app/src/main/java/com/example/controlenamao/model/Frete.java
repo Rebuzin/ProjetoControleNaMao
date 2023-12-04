@@ -2,7 +2,7 @@ package com.example.controlenamao.model;
 
 public class Frete {
 
-    private Integer id;
+    private Long id;
     public String name;
 
     public Frete() {
@@ -11,11 +11,16 @@ public class Frete {
     public Frete(String name) {
         this.name = name;
     }
-    public Integer getId() {
+
+    public Frete(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {

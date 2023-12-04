@@ -40,7 +40,7 @@
 
     <string name="inserirVeiculo">INSERIR NOVO VEÍCULO</string>
     <string name="inserirTipoVeiculo">Veiculo(Placa)</string>
-    <string name="veiculo">Veiculo(Placa)</string>
+    <string name="veiculo">Veiculo (Placa)</string>
 
     <!--DESATIVAR ITEM-->
     <string name="desativar">Desativar</string>

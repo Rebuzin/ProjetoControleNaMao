@@ -27,9 +27,10 @@
         android:text="@string/veiculo" />
 
         <Spinner
-        android:id="@+id/spVeiculos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            android:id="@+id/spVeiculos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp" />
 
         <TextView
         android:layout_width="match_parent"
@@ -39,9 +40,10 @@
         android:text="@string/frete" />
 
         <Spinner
-        android:id="@+id/spFretes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            android:id="@+id/spFretes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp" />
 
         <TextView
         android:layout_width="match_parent"
@@ -51,12 +53,14 @@
         android:text="@string/data" />
 
         <EditText
-        android:id="@+id/edDataCredito"
-        android:autofillHints="date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/campoData"
-        android:inputType="date"/>
+            android:id="@+id/edDataCredito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="date"
+            android:hint="@string/campoData"
+            android:inputType="date"
+            android:minHeight="48dp"
+            android:textColorHint="#757575" />
 
         <TextView
         android:layout_width="match_parent"
@@ -66,12 +70,16 @@
         android:text="@string/valor" />
 
         <EditText
-        android:id="@+id/edValorCredito"
-        android:autofillHints="value"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/inserirCredito"
-        android:inputType="number"/>
+            android:id="@+id/edValorCredito"
+            android:digits="0123456789 ."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="value"
+            android:hint="@string/inserirCredito"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575" />
 
         <Button
         android:id="@+id/btCadastroCredito"
@@ -109,15 +117,15 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-            <Button
-                android:id="@+id/btExcluirCredito"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Negacao"
-                android:textColor="@color/white"
-                android:layout_margin="10dp"
-                android:text="@string/excluir"/>
+<!--            <Button-->
+<!--                android:id="@+id/btExcluirCredito"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="@color/Negacao"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:text="@string/excluir"/>-->
 
             <Button
                 android:id="@+id/btHome"

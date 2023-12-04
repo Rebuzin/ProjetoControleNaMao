@@ -29,7 +29,8 @@
         <Spinner
             android:id="@+id/spVeiculosDebit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="48dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -41,7 +42,8 @@
         <Spinner
             android:id="@+id/spGastos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="48dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -52,11 +54,13 @@
 
         <EditText
             android:id="@+id/edDataDebito"
-            android:autofillHints="date"
-            android:hint="@string/campoData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date"/>
+            android:autofillHints="date"
+            android:hint="@string/campoData"
+            android:inputType="date"
+            android:minHeight="48dp"
+            android:textColorHint="#757575" />
 
         <TextView
             android:layout_width="match_parent"
@@ -67,11 +71,15 @@
 
         <EditText
             android:id="@+id/edValorDebito"
-            android:autofillHints="value"
+            android:digits="0123456789 ."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="value"
             android:hint="@string/inserirDebito"
-            android:inputType="number"/>
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575" />
 
         <Button
             android:id="@+id/btCadastroDebito"
@@ -95,15 +103,15 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-            <Button
-                android:id="@+id/btExcluirDebito"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Negacao"
-                android:textColor="@color/white"
-                android:layout_margin="10dp"
-                android:text="@string/excluir"/>
+<!--            <Button-->
+<!--                android:id="@+id/btExcluirDebito"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="@color/Negacao"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:text="@string/excluir"/>-->
 
             <Button
                 android:id="@+id/btHome"

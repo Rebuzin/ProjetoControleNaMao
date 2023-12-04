@@ -1,5 +1,7 @@
 package com.example.controlenamao;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,11 +11,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.controlenamao.Adapter.FreteAdapter;
 import com.example.controlenamao.Adapter.FreteAdapter;
 import com.example.controlenamao.controller.FreteController;
 import com.example.controlenamao.model.Frete;
@@ -61,6 +65,25 @@ public class FreightFragment extends Fragment {
             }
         });
 
+        lvFrete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                AlertDialog.Builder adb=new AlertDialog.Builder(getActivity());
+                adb.setTitle("Deletar?");
+                adb.setMessage("Deseja remover esse tipo de frete? ");
+                final Long positionToRemove = id;
+                adb.setNegativeButton("Não", null);
+                adb.setPositiveButton("Sim", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        fretecontroller.apagarFrete(positionToRemove);
+                        excluirFrete();
+                        fcAdapter.notifyDataSetChanged();
+                    }});
+                adb.show();
+            }
+        });
+
         atualizaLista();
 
 //      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
@@ -98,6 +121,11 @@ public class FreightFragment extends Fragment {
                 Toast.makeText(getContext(),
                         "Frete cadastrado com sucesso!!",
                         Toast.LENGTH_LONG).show();
+                listaFretes = fc.retornarTodosFretes();
+                FreteAdapter gcAdapter = new FreteAdapter(this.getContext(), listaFretes);
+                gcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+                lvFrete.setAdapter(gcAdapter);
+                edFreight.setText("");
             } else {
                 Toast.makeText(getContext(),
                         "Erro ao cadastrar Frete, verifique LOG.",
@@ -110,5 +138,8 @@ public class FreightFragment extends Fragment {
     private void atualizaLista(){
         FreteAdapter adapter = new FreteAdapter(this.getContext(), listaFretes);
         lvFrete.setAdapter(adapter);
+    }
+    private void excluirFrete(){
+        fretecontroller.apagarFrete(lvFrete.getSelectedItemId());
     }
 }

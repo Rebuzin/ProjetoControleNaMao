@@ -1,11 +1,13 @@
 package com.example.controlenamao;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.service.autofill.RegexValidator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -16,7 +18,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.VeiculoController;
-import com.example.controlenamao.masks.MaskedData;
 import com.example.controlenamao.masks.MaskedRenamed;
 import com.example.controlenamao.model.Veiculo;
 
@@ -26,6 +27,7 @@ public class VeihcleFragment extends Fragment {
 
     private EditText edRenamed;
     private Button btCadastroVeiculo;
+//    private Button btExcluirVeiculo;
     private Button btHome;
     private ListView lvVeiculo;
     private VeiculoController veiculocontroller;
@@ -44,6 +46,7 @@ public class VeihcleFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         btCadastroVeiculo = getView().findViewById(R.id.btCadastroVeiculo);
+//        btExcluirVeiculo = getView().findViewById(R.id.btExcluirVeiculo);
         edRenamed = getView().findViewById(R.id.edRenamed);
         btHome = getView().findViewById(R.id.btHome);
 
@@ -64,8 +67,57 @@ public class VeihcleFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 salvarVeiculo();
+                atualizaLista();
             }
         });
+
+//        btExcluirVeiculo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                excluirVeiculo();
+//            }
+//        });
+
+        lvVeiculo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Você deseja deletar " + listaVeiculos.get(position) + "da lista?")
+                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+//                                excluirVeiculo(position);
+                                gcAdapter.notifyDataSetChanged();
+                            }
+                        }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).create().show();
+                return false;
+            }
+        });
+        lvVeiculo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                AlertDialog.Builder adb=new AlertDialog.Builder(getActivity());
+                adb.setTitle("Deletar?");
+                adb.setMessage("Deseja remover esse veículo? ");
+                final Long positionToRemove = id;
+                adb.setNegativeButton("Não", null);
+                adb.setPositiveButton("Sim", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        veiculocontroller.apagarVeiculo(positionToRemove);
+                        excluirVeiculo();
+                        gcAdapter.notifyDataSetChanged();
+                    }});
+                adb.show();
+            }
+        });
+
+
 
         atualizaLista();
 
@@ -105,6 +157,11 @@ public class VeihcleFragment extends Fragment {
                 Toast.makeText(getContext(),
                         "Veiculo cadastrado com sucesso!!",
                         Toast.LENGTH_LONG).show();
+                listaVeiculos = vc.retornarTodosVeiculos();
+                VeiculoAdapter gcAdapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
+                gcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+                lvVeiculo.setAdapter(gcAdapter);
+                edRenamed.setText("");
             } else {
                 Toast.makeText(getContext(),
                         "Erro ao cadastrar Veiculo, verifique LOG.",
@@ -115,6 +172,9 @@ public class VeihcleFragment extends Fragment {
     private void atualizaLista(){
         VeiculoAdapter adapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
         lvVeiculo.setAdapter(adapter);
+    }
+    private void excluirVeiculo(){
+       veiculocontroller.apagarVeiculo(lvVeiculo.getSelectedItemId());
     }
 
 }

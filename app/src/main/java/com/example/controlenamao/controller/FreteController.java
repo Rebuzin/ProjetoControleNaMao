@@ -26,8 +26,8 @@ public class FreteController{
         return FreteDao.getInstancia(context).update(frete);
     }
 
-    public long apagarFrete(String name){
-        Frete frete = new Frete(name);
+    public long apagarFrete(Long id){
+        Frete frete = new Frete(id);
         return FreteDao.getInstancia(context).delete(frete);
     }
 
@@ -44,6 +44,8 @@ public class FreteController{
         String mensagem = "";
         if(name == null || name.isEmpty()){
             mensagem += "O tipo do frete deve ser preenchido!!\n";
+        }else if (name.length() < 3){
+            mensagem += "O tipo do frete deve conter no mínimo 3 caracteres!!\n";
         }else{
             Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
         }

@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:autofillHints="name"
             android:hint="@string/escreva"
-            android:inputType="text"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ç"
+            android:inputType="textCapSentences|textAutoCorrect"
             android:minHeight="48dp"
             android:textColorHint="#757575" />
 
@@ -69,15 +70,15 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-            <Button
-                android:id="@+id/btDesativarFrete"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Negacao"
-                android:textColor="@color/white"
-                android:layout_margin="10dp"
-                android:text="@string/desativar"/>
+<!--            <Button-->
+<!--                android:id="@+id/btDesativarFrete"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="@color/Negacao"-->
+<!--                android:text="@string/excluir"-->
+<!--                android:textColor="@color/white" />-->
 
             <Button
                 android:id="@+id/btHome"

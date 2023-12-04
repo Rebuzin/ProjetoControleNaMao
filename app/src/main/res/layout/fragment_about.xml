@@ -8,52 +8,99 @@
     android:gravity="center"
     tools:context=".AboutFragment">
 
-    <ScrollView
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/nav_logo"
+        android:contentDescription="Logo Mamore" />
+
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp">
+        android:text="Sobre Nossa Empresa"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@id/imageViewLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
 
-        <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewDescricao"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_below="@id/textViewTitulo"
+        android:layout_marginTop="16dp"
+        android:text="A Mamore Transportes é uma empresa de transporte comprometida em fornecer soluções logísticas eficientes e confiáveis. Com mais de 10 anos de experiência no setor, nos tornamos experiêntes na entrega de cargas em todo o país. Nossa frota moderna e equipe dedicada garantem que as mercadorias de nossos clientes cheguem ao destino com segurança e pontualidade."
+        android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/aboutPt1" />
+    <TextView
+        android:id="@+id/textViewMissao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDescricao"
+        android:layout_marginTop="16dp"
+        android:text="Missão:\nOferecer serviços de transporte confiáveis, sustentáveis e inovadores, superando as expectativas de nossos clientes e contribuindo para o crescimento econômico do país."
+        android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/aboutPt2"/>
+    <TextView
+        android:id="@+id/textViewValores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewMissao"
+        android:layout_marginTop="16dp"
+        android:text="Valores:\n- Compromisso com a excelência\n- Integridade e ética\n- Sustentabilidade ambiental\n- Foco no cliente"
+        android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/aboutPt3"/>
+<!--    <ScrollView-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingTop="90dp"-->
+<!--        android:layout_margin="40dp">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/aboutPt4"/>
+<!--        <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
 
-        </LinearLayout>
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="@string/aboutPt1" />-->
 
-    </ScrollView>
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="@string/aboutPt2"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="@string/aboutPt3"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:text="@string/aboutPt4"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </ScrollView>-->
 
 <!--    <LinearLayout-->
 <!--        android:layout_alignParentBottom="true"-->
@@ -74,17 +121,17 @@
 
 <!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nameEmpresa"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/nameEmpresa"/>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 </RelativeLayout>

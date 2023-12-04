@@ -76,7 +76,7 @@ public class GastoDao implements GenericDao<Gasto> {
     @Override
     public long delete(Gasto obj) {
         String[]identificador = {String.valueOf(obj.getId())};
-        return bd.delete(tableName,"NAME = ?",identificador);
+        return bd.delete(tableName,"ID = ?",identificador);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class GastoDao implements GenericDao<Gasto> {
             if (cursor.moveToFirst()) {
                 do {
                     Gasto gasto = new Gasto();
-                    gasto.setId(cursor.getInt(0));
+                    gasto.setId(cursor.getLong(0));
                     gasto.setName(cursor.getString(1));
 
                     lista.add(gasto);

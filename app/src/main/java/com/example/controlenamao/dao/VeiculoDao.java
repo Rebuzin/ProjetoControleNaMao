@@ -77,7 +77,7 @@ public class VeiculoDao implements GenericDao<Veiculo> {
     @Override
     public long delete(Veiculo obj) {
         String[]identificador = {String.valueOf(obj.getId())};
-        return bd.delete(tableName,"RENAMED = ?",identificador);
+        return bd.delete(tableName,"ID = ?",identificador);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class VeiculoDao implements GenericDao<Veiculo> {
             if (cursor.moveToFirst()) {
                 do {
                     Veiculo veiculo = new Veiculo();
-                    veiculo.setId(cursor.getInt(0));
+                    veiculo.setId(cursor.getLong(0));
                     veiculo.setRenamed(cursor.getString(1));
 
                     lista.add(veiculo);

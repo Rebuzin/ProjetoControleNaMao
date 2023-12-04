@@ -118,13 +118,13 @@ public class FaturamentoFragment extends Fragment {
             Double valorDebito = controller.buscarDebitoByGasto(filtro, gasto);
 
             if(contador == 0){
-                tvCombustivel.setText(Double.toString(valorDebito));
+                tvCombustivel.setText("R$" + Double.toString(valorDebito));
             }
             if(contador == 1) {
-                tvPneus.setText(Double.toString(valorDebito));
+                tvPneus.setText("R$" + Double.toString(valorDebito));
             }
             if(contador == 2) {
-                tvServicoEletrico.setText(Double.toString(valorDebito));
+                tvServicoEletrico.setText("R$" + Double.toString(valorDebito));
             }
 
             pieChart.addPieSlice(

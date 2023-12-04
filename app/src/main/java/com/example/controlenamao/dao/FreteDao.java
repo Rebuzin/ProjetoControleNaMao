@@ -90,7 +90,7 @@ public class  FreteDao implements GenericDao<Frete> {
             if (cursor.moveToFirst()) {
                 do {
                     Frete frete = new Frete();
-                    frete.setId(cursor.getInt(0));
+                    frete.setId(cursor.getLong(0));
                     frete.setName(cursor.getString(1));
 
                     lista.add(frete);

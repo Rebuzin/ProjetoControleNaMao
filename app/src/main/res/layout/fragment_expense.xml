@@ -29,11 +29,14 @@
 
         <EditText
             android:id="@+id/edExpense"
-            android:autofillHints="name"
-            android:hint="@string/escreva"
-            android:inputType="text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ çéÉaâ"
+            android:hint="@string/escreva"
+            android:inputType="textCapSentences|textAutoCorrect"
+            android:minHeight="48dp"
+            android:textColorHint="#757575" />
 
         <Button
             android:id="@+id/btCadastroGasto"
@@ -67,28 +70,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
             android:padding="10dp">
 
-            <Button
-                android:id="@+id/btDesativarGasto"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Negacao"
-                android:textColor="@color/white"
-                android:layout_margin="10dp"
-                android:text="@string/desativar"/>
+<!--            <Button-->
+<!--                android:id="@+id/btDesativarGasto"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="@color/Negacao"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:text="@string/excluir"/>-->
 
             <Button
                 android:id="@+id/btHome"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/Afirmacao"
+                android:text="@string/voltar"
                 android:textColor="@color/white"
-                android:layout_margin="10dp"
-                android:text="@string/voltar"/>
+                tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
 

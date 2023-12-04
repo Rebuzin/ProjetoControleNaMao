@@ -26,8 +26,8 @@ public class GastoController {
         return GastoDao.getInstancia(context).update(gasto);
     }
 
-    public long apagarGasto(String name){
-        Gasto gasto = new Gasto(name);
+    public long apagarGasto(Long id){
+        Gasto gasto = new Gasto(id);
         return GastoDao.getInstancia(context).delete(gasto);
     }
 
@@ -44,6 +44,8 @@ public class GastoController {
         String mensagem = "";
         if(name == null || name.isEmpty()){
             mensagem += "O tipo do gasto deve ser preenchido!!\n";
+        }else if (name.length() < 3){
+            mensagem += "O tipo do gasto deve conter no mínimo 3 letras!!\n";
         }else{
             Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
         }

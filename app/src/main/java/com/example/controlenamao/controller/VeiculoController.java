@@ -3,7 +3,6 @@ package com.example.controlenamao.controller;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.controlenamao.CreditFragment;
 import com.example.controlenamao.dao.VeiculoDao;
 import com.example.controlenamao.model.Veiculo;
 
@@ -17,9 +16,6 @@ public class VeiculoController {
         this.context = context;
     }
 
-    //todo
-    public VeiculoController(CreditFragment creditFragment) {
-    }
 
     public long salvarVeiculo(String renamed){
         Veiculo veiculo = new Veiculo(renamed);
@@ -31,8 +27,8 @@ public class VeiculoController {
         return VeiculoDao.getInstancia(context).update(veiculo);
     }
 
-    public long apagarVeiculo(String renamed){
-        Veiculo veiculo = new Veiculo(renamed);
+    public long apagarVeiculo(Long id){
+        Veiculo veiculo = new Veiculo(id);
         return VeiculoDao.getInstancia(context).delete(veiculo);
     }
 
@@ -49,6 +45,9 @@ public class VeiculoController {
         String mensagem = "";
         if(renamed == null || renamed.isEmpty()){
             mensagem += "A placa do veiculo deve ser preenchida!!\n";
+        }else if (renamed.length() < 7){
+            mensagem += "Placa incorreta!!\n";
+            mensagem += "A placa deve conter no mínimo 7 caracteres!!\n";
         }else{
             Toast.makeText(context, renamed, Toast.LENGTH_SHORT).show();
         }

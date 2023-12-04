@@ -29,11 +29,13 @@
 
         <EditText
             android:id="@+id/edRenamed"
-            android:autofillHints="name"
-            android:hint="@string/escreva"
-            android:inputType="textCapCharacters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:digits="123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="@string/escreva"
+            android:inputType="textCapCharacters"
+            android:textColorHint="#757575"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <Button
@@ -70,15 +72,15 @@
         android:layout_height="wrap_content"
         android:padding="10dp">
 
-        <Button
-            android:id="@+id/btDesativarVeiculo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/Negacao"
-            android:textColor="@color/white"
-            android:layout_margin="10dp"
-            android:text="@string/excluir"/>
+<!--        <Button-->
+<!--            android:id="@+id/btExcluirVeiculo"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:backgroundTint="@color/Negacao"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:text="@string/excluir"/>-->
 
         <Button
             android:id="@+id/btHome"
@@ -88,8 +90,7 @@
             android:backgroundTint="@color/Afirmacao"
             android:textColor="@color/white"
             android:layout_margin="10dp"
-            android:text="@string/voltar"
-            android:onClick="voltarHome"/>
+            android:text="@string/voltar"/>
 
         </LinearLayout>
 

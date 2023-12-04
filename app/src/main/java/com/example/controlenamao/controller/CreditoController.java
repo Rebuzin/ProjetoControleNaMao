@@ -46,19 +46,20 @@ public class CreditoController{
         String mensagem = "";
 
         if(veiculo == null){
-            mensagem += "Deve ser informado um Veiculo!!\n";
+            mensagem += "Deve ser cadastrado um Veículo!!\n";
             return mensagem;
         }
         if(frete == null){
-            mensagem += "Deve ser informado um Frete!\n";
+            mensagem += "Deve ser cadastrado um Tipo de Frete!!\n";
             return mensagem;
         }
-        if(String.valueOf(data) == null || String.valueOf(data).isEmpty() || data == "0"){
-            mensagem += "A data deve ser preenchida!!\n";
+        if(String.valueOf(data) == null || String.valueOf(data).isEmpty() || data == "0" || data.length() < 10){
+            mensagem += "A data deve ser preenchida corretamente!!\n";
+            mensagem += "(dd/mm/aaaa)\n";
             return mensagem;
         }
         if(String.valueOf(valor) == null || String.valueOf(valor).isEmpty() || valor == "0"){
-            mensagem += "O valor deve ser preenchido!\n";
+            mensagem += "O valor deve ser preenchido!!\n";
             return mensagem;
         }
         return mensagem;
