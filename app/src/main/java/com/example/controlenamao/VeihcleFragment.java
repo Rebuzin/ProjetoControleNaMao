@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.VeiculoController;
+import com.example.controlenamao.dao.VeiculoDao;
 import com.example.controlenamao.masks.MaskedRenamed;
 import com.example.controlenamao.model.Veiculo;
 
@@ -105,13 +106,18 @@ public class VeihcleFragment extends Fragment {
                 AlertDialog.Builder adb=new AlertDialog.Builder(getActivity());
                 adb.setTitle("Deletar?");
                 adb.setMessage("Deseja remover esse veículo? ");
+                //PEGANDO O ID DA LISTA NÃO DO BANCO
                 final Long positionToRemove = id;
+                gcAdapter.getItem((int) id);
                 adb.setNegativeButton("Não", null);
                 adb.setPositiveButton("Sim", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        veiculocontroller.apagarVeiculo(positionToRemove);
+                        veiculocontroller.apagarVeiculo(gcAdapter);
                         excluirVeiculo();
                         gcAdapter.notifyDataSetChanged();
+                        listaVeiculos = vc.retornarTodosVeiculos();
+                        gcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+                        lvVeiculo.setAdapter(gcAdapter);
                     }});
                 adb.show();
             }
@@ -174,7 +180,11 @@ public class VeihcleFragment extends Fragment {
         lvVeiculo.setAdapter(adapter);
     }
     private void excluirVeiculo(){
-       veiculocontroller.apagarVeiculo(lvVeiculo.getSelectedItemId());
+        VeiculoAdapter adapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
+        Long id = lvVeiculo.getSelectedItemId();
+        adapter.getItemId(id.intValue());
+       veiculocontroller.apagarVeiculo(adapter);
     }
+
 
 }

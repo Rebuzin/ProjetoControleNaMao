@@ -3,6 +3,7 @@ package com.example.controlenamao.controller;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.dao.VeiculoDao;
 import com.example.controlenamao.model.Veiculo;
 
@@ -27,8 +28,8 @@ public class VeiculoController {
         return VeiculoDao.getInstancia(context).update(veiculo);
     }
 
-    public long apagarVeiculo(Long id){
-        Veiculo veiculo = new Veiculo(id);
+    public long apagarVeiculo(VeiculoAdapter id){
+        Veiculo veiculo = new Veiculo(String.valueOf(id));
         return VeiculoDao.getInstancia(context).delete(veiculo);
     }
 
@@ -36,8 +37,8 @@ public class VeiculoController {
         return VeiculoDao.getInstancia(context).getAll();
     }
 
-    public Veiculo retornarVeiculo(int ra){
-        return VeiculoDao.getInstancia(context).getById(ra);
+    public Veiculo retornarVeiculo(Long id){
+        return VeiculoDao.getInstancia(context).getById(id);
     }
 
     public String validaVeiculo(String renamed){

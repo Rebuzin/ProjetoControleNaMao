@@ -37,7 +37,7 @@ public class DebitoController {
         return MovimentacaoDao.getInstancia(context).getAll();
     }
 
-    public Movimentacao retornarDebito(int ra){
+    public Movimentacao retornarDebito(Long ra){
         return MovimentacaoDao.getInstancia(context).getById(ra);
     }
 

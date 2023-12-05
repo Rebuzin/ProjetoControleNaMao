@@ -35,7 +35,7 @@ public class FreteController{
         return FreteDao.getInstancia(context).getAll();
     }
 
-    public Frete retornarFrete(int ra){
+    public Frete retornarFrete(Long ra){
         return FreteDao.getInstancia(context).getById(ra);
     }
 

@@ -84,7 +84,7 @@ public class DebitoDao implements GenericDao<Debito> {
     }
 
     @Override
-    public Debito getById(int id) {
+    public Debito getById(Long id) {
         return null;
     }
 }

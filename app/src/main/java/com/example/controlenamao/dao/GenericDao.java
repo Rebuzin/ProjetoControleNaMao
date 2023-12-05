@@ -8,5 +8,5 @@ public interface GenericDao<Object> {
     long update (Object obj);
     long delete (Object obj);
     ArrayList<Object> getAll();
-    Object getById(int id);
+    Object getById(Long id);
 }

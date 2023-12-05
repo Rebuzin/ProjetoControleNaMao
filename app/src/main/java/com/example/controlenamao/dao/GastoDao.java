@@ -102,7 +102,7 @@ public class GastoDao implements GenericDao<Gasto> {
     }
 
     @Override
-    public Gasto getById(int id) {
+    public Gasto getById(Long id) {
         return null;
     }
 }

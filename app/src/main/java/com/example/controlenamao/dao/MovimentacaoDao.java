@@ -99,7 +99,7 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
     }
 
     @Override
-    public Movimentacao getById(int id) {
+    public Movimentacao getById(Long id) {
         //TENTATIVA DE RETORNAR CREDITO POR ID / PRECISA SER VERIFICADO COMO PUXAR DADOS DE OUTROS DAO'S TAMBÉM
 //        ArrayList<Credito> Credito = new ArrayList<>();
 //        try {

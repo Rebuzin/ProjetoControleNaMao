@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textViewTitulo"
         android:layout_marginTop="16dp"
-        android:text="A Mamore Transportes é uma empresa de transporte comprometida em fornecer soluções logísticas eficientes e confiáveis. Com mais de 10 anos de experiência no setor, nos tornamos experiêntes na entrega de cargas em todo o país. Nossa frota moderna e equipe dedicada garantem que as mercadorias de nossos clientes cheguem ao destino com segurança e pontualidade."
+        android:text="A Mamore Transportes é uma empresa de transporte comprometida em fornecer soluções logísticas eficientes e confiáveis. Com quase 10 anos de experiência no setor, nos tornamos experiêntes na entrega de cargas em todo o país. Nossa frota moderna e equipe dedicada garantem que as mercadorias de nossos clientes cheguem ao destino com segurança e pontualidade."
         android:textSize="16sp" />
 
     <TextView

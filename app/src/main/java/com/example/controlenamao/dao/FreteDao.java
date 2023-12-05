@@ -103,7 +103,7 @@ public class  FreteDao implements GenericDao<Frete> {
     }
 
     @Override
-    public Frete getById(int id) {
+    public Frete getById(Long id) {
         return null;
     }
 }

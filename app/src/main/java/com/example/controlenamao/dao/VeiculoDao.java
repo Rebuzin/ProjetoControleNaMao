@@ -103,7 +103,7 @@ public class VeiculoDao implements GenericDao<Veiculo> {
     }
 
     @Override
-    public Veiculo getById(int id) {
+    public Veiculo getById(Long id) {
         return null;
     }
 }

@@ -144,7 +144,7 @@ public class FaturamentoFragment extends Fragment {
          Double lucro = creditosFrete - gastosTotais;
 
 
-        tvLucroFinal.setText(Double.toString(lucro));
+        tvLucroFinal.setText("R$" + Double.toString(lucro));
 
 
         pieChart.addPieSlice(

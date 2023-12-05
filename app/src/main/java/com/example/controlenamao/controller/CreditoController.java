@@ -37,7 +37,7 @@ public class CreditoController{
         return MovimentacaoDao.getInstancia(context).getAll();
     }
 
-    public Movimentacao retornarCredito(int ra){
+    public Movimentacao retornarCredito(Long ra){
         return MovimentacaoDao.getInstancia(context).getById(ra);
     }
 

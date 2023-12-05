@@ -35,7 +35,7 @@ public class GastoController {
         return GastoDao.getInstancia(context).getAll();
     }
 
-    public Gasto retornarGasto(int ra){
+    public Gasto retornarGasto(Long ra){
         return GastoDao.getInstancia(context).getById(ra);
     }
 
