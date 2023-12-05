@@ -28,8 +28,7 @@ public class VeiculoController {
         return VeiculoDao.getInstancia(context).update(veiculo);
     }
 
-    public long apagarVeiculo(VeiculoAdapter id){
-        Veiculo veiculo = new Veiculo(String.valueOf(id));
+    public long apagarVeiculo(Veiculo veiculo){
         return VeiculoDao.getInstancia(context).delete(veiculo);
     }
 

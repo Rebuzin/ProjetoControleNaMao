@@ -103,12 +103,11 @@ public class VeihcleFragment extends Fragment {
                 adb.setNegativeButton("Não", null);
                 adb.setPositiveButton("Sim", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        veiculocontroller.apagarVeiculo(gcAdapter);
-                        excluirVeiculo();
-                        gcAdapter.notifyDataSetChanged();
-                        listaVeiculos = vc.retornarTodosVeiculos();
-                        gcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
-                        lvVeiculo.setAdapter(gcAdapter);
+                        veiculocontroller.apagarVeiculo(listaVeiculos.get(position));
+
+                        listaVeiculos.remove(position);
+
+                        atualizaLista();
                     }});
                 adb.show();
             }
@@ -171,7 +170,7 @@ public class VeihcleFragment extends Fragment {
         VeiculoAdapter adapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
         Long id = lvVeiculo.getSelectedItemId();
         adapter.getItemId(id.intValue());
-       veiculocontroller.apagarVeiculo(adapter);
+//       veiculocontroller.apagarVeiculo(adapter);
     }
 
 
