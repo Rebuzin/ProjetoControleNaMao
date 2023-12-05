@@ -26,8 +26,7 @@ public class GastoController {
         return GastoDao.getInstancia(context).update(gasto);
     }
 
-    public long apagarGasto(Long id){
-        Gasto gasto = new Gasto(id);
+    public long apagarGasto(Gasto gasto){
         return GastoDao.getInstancia(context).delete(gasto);
     }
 

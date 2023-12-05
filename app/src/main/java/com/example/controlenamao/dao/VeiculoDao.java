@@ -106,4 +106,24 @@ public class VeiculoDao implements GenericDao<Veiculo> {
     public Veiculo getById(Long id) {
         return null;
     }
+
+    public int buscaId(String renamed){
+        int idVeiculo = 0;
+        try {
+            String sql = "select ID " +
+                    "from VEICULO " +
+                    "where RENAMED = " + renamed;
+            Cursor c = bd.rawQuery(sql, null);
+            if (c.moveToFirst()) {
+                idVeiculo = c.getInt(0);
+            } else {
+                idVeiculo = 0;
+            }
+
+            c.close();
+        }catch (SQLException ex) {
+            Log.e("ERRO", "VeiculoDao.buscaId(): " + ex.getMessage());
+        }
+        return idVeiculo;
+    }
 }

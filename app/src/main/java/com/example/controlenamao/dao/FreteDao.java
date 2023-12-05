@@ -77,7 +77,7 @@ public class  FreteDao implements GenericDao<Frete> {
     @Override
     public long delete(Frete obj) {
         String[]identificador = {String.valueOf(obj.getId())};
-        return bd.delete(tableName,"NAME = ?",identificador);
+        return bd.delete(tableName,"ID = ?",identificador);
     }
 
     @Override

@@ -26,8 +26,7 @@ public class FreteController{
         return FreteDao.getInstancia(context).update(frete);
     }
 
-    public long apagarFrete(Long id){
-        Frete frete = new Frete(id);
+    public long apagarFrete(Frete frete){
         return FreteDao.getInstancia(context).delete(frete);
     }
 

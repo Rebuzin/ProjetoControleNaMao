@@ -73,12 +73,14 @@ public class FreightFragment extends Fragment {
                 adb.setTitle("Deletar?");
                 adb.setMessage("Deseja remover esse tipo de frete? ");
                 final Long positionToRemove = id;
+                fcAdapter.getItem((int) id);
                 adb.setNegativeButton("Não", null);
                 adb.setPositiveButton("Sim", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        fretecontroller.apagarFrete(positionToRemove);
-                        excluirFrete();
+                        fretecontroller.apagarFrete(listaFretes.get(position));
                         fcAdapter.notifyDataSetChanged();
+                        listaFretes.remove(position);
+                        atualizaLista();
                     }});
                 adb.show();
             }
@@ -139,7 +141,7 @@ public class FreightFragment extends Fragment {
         FreteAdapter adapter = new FreteAdapter(this.getContext(), listaFretes);
         lvFrete.setAdapter(adapter);
     }
-    private void excluirFrete(){
-        fretecontroller.apagarFrete(lvFrete.getSelectedItemId());
-    }
+//    private void excluirFrete(){
+//        fretecontroller.apagarFrete(lvFrete.getSelectedItemId());
+//    }
 }

@@ -74,12 +74,14 @@ public class ExpenseFragment extends Fragment {
                 adb.setTitle("Deletar?");
                 adb.setMessage("Deseja remover esse tipo de gasto? ");
                 final Long positionToRemove = id;
+                gcAdapter.getItem((int) id);
                 adb.setNegativeButton("Não", null);
                 adb.setPositiveButton("Sim", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        gastocontroller.apagarGasto(positionToRemove);
-                        excluirGasto();
+                        gastocontroller.apagarGasto(listaGastos.get(position));
                         gcAdapter.notifyDataSetChanged();
+                        listaGastos.remove(position);
+                        atualizaLista();
                     }});
                 adb.show();
             }
@@ -136,7 +138,7 @@ public class ExpenseFragment extends Fragment {
         GastoAdapter adapter = new GastoAdapter(this.getContext(), listaGastos);
         lvGasto.setAdapter(adapter);
     }
-    private void excluirGasto(){
-        gastocontroller.apagarGasto(lvGasto.getSelectedItemId());
-    }
+//    private void excluirGasto(){
+//        gastocontroller.apagarGasto(lvGasto.getSelectedItemId());
+//    }
 }
