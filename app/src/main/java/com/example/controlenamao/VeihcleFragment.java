@@ -28,7 +28,6 @@ public class VeihcleFragment extends Fragment {
 
     private EditText edRenamed;
     private Button btCadastroVeiculo;
-//    private Button btExcluirVeiculo;
     private Button btHome;
     private ListView lvVeiculo;
     private VeiculoController veiculocontroller;
@@ -47,7 +46,6 @@ public class VeihcleFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         btCadastroVeiculo = getView().findViewById(R.id.btCadastroVeiculo);
-//        btExcluirVeiculo = getView().findViewById(R.id.btExcluirVeiculo);
         edRenamed = getView().findViewById(R.id.edRenamed);
         btHome = getView().findViewById(R.id.btHome);
 
@@ -71,13 +69,6 @@ public class VeihcleFragment extends Fragment {
                 atualizaLista();
             }
         });
-
-//        btExcluirVeiculo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                excluirVeiculo();
-//            }
-//        });
 
         lvVeiculo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -123,10 +114,7 @@ public class VeihcleFragment extends Fragment {
             }
         });
 
-
-
         atualizaLista();
-
 
 //      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
         btHome.setOnClickListener(new View.OnClickListener() {

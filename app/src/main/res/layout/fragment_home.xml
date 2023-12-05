@@ -242,7 +242,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="R$0.0"
                     android:id="@+id/tvCombustivel"
                     android:textAlignment="textEnd"
                     android:textSize="18sp"
@@ -281,7 +281,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="R$0.0"
                     android:id="@+id/tvPneus"
                     android:textAlignment="textEnd"
                     android:textSize="18sp"
@@ -319,7 +319,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="R$0.0"
                     android:id="@+id/tvServicoEletrico"
                     android:textAlignment="textEnd"
                     android:textSize="18sp"
@@ -358,7 +358,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="R$0.0"
                     android:id="@+id/tvLucroFinal"
                     android:textAlignment="textEnd"
                     android:textSize="18sp"
