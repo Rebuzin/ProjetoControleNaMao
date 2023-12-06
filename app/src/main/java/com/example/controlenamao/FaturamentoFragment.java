@@ -11,17 +11,22 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.controlenamao.Adapter.HomeAdapter;
+import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.CreditoController;
 import com.example.controlenamao.controller.DebitoController;
 import com.example.controlenamao.controller.HomeController;
+import com.example.controlenamao.controller.VeiculoController;
 import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
+import com.example.controlenamao.model.vo.HomeVo;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FaturamentoFragment extends Fragment {
 
@@ -30,6 +35,8 @@ public class FaturamentoFragment extends Fragment {
     PieChart pieChart;
     private HomeController controller;
     private String [] colors = new String[10];
+
+    private ListView lv;
 
 //    private ListView lvFaturamento;
 //    private CreditoController creditocontroller;
@@ -46,13 +53,15 @@ public class FaturamentoFragment extends Fragment {
 
         controller = new HomeController(getContext());
 
-        tvCombustivel = getView().findViewById(R.id.tvCombustivel);
-        tvPneus = getView().findViewById(R.id.tvPneus);
-        tvServicoEletrico = getView().findViewById(R.id.tvServicoEletrico);
-        tvLucroFinal = getView().findViewById(R.id.tvLucroFinal);
+//        tvCombustivel = getView().findViewById(R.id.tvCombustivel);
+//        tvPneus = getView().findViewById(R.id.tvPneus);
+//        tvServicoEletrico = getView().findViewById(R.id.tvServicoEletrico);
+//        tvLucroFinal = getView().findViewById(R.id.tvLucroFinal);
         pieChart = getView().findViewById(R.id.piechart);
 
-//        lvFaturamento = getView().findViewById(R.id.lvFaturamento);
+        lv = getActivity().findViewById(R.id.lvHome);
+
+
 //        lvFaturamento = getActivity().findViewById(R.id.lvFaturamento);
 
 //        creditocontroller =  new CreditoController(getContext());
@@ -106,6 +115,8 @@ public class FaturamentoFragment extends Fragment {
 
     private void setData() {
 
+        List<HomeVo> listHome = new ArrayList<>();
+
         ArrayList<Gasto> listaGasto = controller.buscarTodosGastos();
 
         HomeFiltroVo filtro = new HomeFiltroVo();
@@ -117,15 +128,15 @@ public class FaturamentoFragment extends Fragment {
 
             Double valorDebito = controller.buscarDebitoByGasto(filtro, gasto);
 
-            if(contador == 0){
-                tvCombustivel.setText("R$" + Double.toString(valorDebito));
-            }
-            if(contador == 1) {
-                tvPneus.setText("R$" + Double.toString(valorDebito));
-            }
-            if(contador == 2) {
-                tvServicoEletrico.setText("R$" + Double.toString(valorDebito));
-            }
+//            if(contador == 0){
+//                tvCombustivel.setText("R$" + Double.toString(valorDebito));
+//            }
+//            if(contador == 1) {
+//                tvPneus.setText("R$" + Double.toString(valorDebito));
+//            }
+//            if(contador == 2) {
+//                tvServicoEletrico.setText("R$" + Double.toString(valorDebito));
+//            }
 
             pieChart.addPieSlice(
                     new PieModel(
@@ -135,16 +146,32 @@ public class FaturamentoFragment extends Fragment {
 
             gastosTotais = gastosTotais + valorDebito;
 
+            HomeVo homeVo = new HomeVo();
+            homeVo.setTipo(gasto.getName());
+            homeVo.setValor(valorDebito.floatValue());
+            listHome.add(homeVo);
+
             contador = contador +1;
 
         }
 
         Double creditosFrete = controller.buscarCreditosFrete(filtro);
 
-         Double lucro = creditosFrete - gastosTotais;
+        Double lucro = creditosFrete - gastosTotais;
+
+        HomeVo homeVo = new HomeVo();
+        homeVo.setTipo("Lucro Final");
+        homeVo.setValor(lucro);
+        listHome.add(homeVo);
 
 
-        tvLucroFinal.setText("R$" + Double.toString(lucro));
+         //Setando list
+        HomeAdapter gcAdapter = new HomeAdapter(this.getContext(), listHome);
+        gcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_activated_2);
+        lv.setAdapter(gcAdapter);
+
+
+//        tvLucroFinal.setText("R$" + Double.toString(lucro));
 
 
         pieChart.addPieSlice(
