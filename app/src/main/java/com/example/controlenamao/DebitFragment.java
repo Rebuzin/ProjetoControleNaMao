@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.controlenamao.Adapter.GastoAdapter;
-import com.example.controlenamao.Adapter.MovimentacaoAdapter;
+//import com.example.controlenamao.Adapter.MovimentacaoAdapter;
 import com.example.controlenamao.Adapter.MyAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.DebitoController;
@@ -79,8 +79,8 @@ public class DebitFragment extends Fragment {
         cc =  new DebitoController(getContext());
         listaDebito = cc.retornarTodosDebitos();
 
-        MovimentacaoAdapter mcAdapter = new MovimentacaoAdapter(this.getContext(), listaDebito);
-        mcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+//        MovimentacaoAdapter mcAdapter = new MovimentacaoAdapter(this.getContext(), listaDebito);
+//        mcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
 //        QUEBRANDO
 //        lvDebito.setAdapter(mcAdapter);
 
@@ -153,6 +153,8 @@ public class DebitFragment extends Fragment {
                     Toast.makeText(getContext(),
                             "Debito cadastrado com sucesso!!",
                             Toast.LENGTH_LONG).show();
+                            edValorDebito.getText().toString();
+                            edDataDebito.getText();
                 } else {
                     Toast.makeText(getContext(),
                             "Erro ao cadastrar Debito, verifique LOG.",

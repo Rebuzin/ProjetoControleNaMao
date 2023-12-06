@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.controlenamao.Adapter.FreteAdapter;
-import com.example.controlenamao.Adapter.MovimentacaoAdapter;
+//import com.example.controlenamao.Adapter.MovimentacaoAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.CreditoController;
 import com.example.controlenamao.controller.FreteController;
@@ -78,8 +78,8 @@ public class CreditFragment extends Fragment {
         cc =  new CreditoController(getContext());
         listaCredito = cc.retornarTodosCreditos();
 
-        MovimentacaoAdapter mcAdapter = new MovimentacaoAdapter(this.getContext(), listaCredito);
-        mcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+//        MovimentacaoAdapter mcAdapter = new MovimentacaoAdapter(this.getContext(), listaCredito);
+//        mcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
 //        QUEBRANDO
 //        lvCredito.setAdapter(mcAdapter);
 

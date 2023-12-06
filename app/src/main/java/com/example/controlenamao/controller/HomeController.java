@@ -17,23 +17,6 @@ public class HomeController {
         this.context = context;
     }
 
-    public Double buscarDebitoCombustivel(HomeFiltroVo filtro){
-        //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
-        return MovimentacaoDao.getInstancia(context).buscarDebitoCombustivel();
-    }
-
-
-    public Double buscarDebitoPneus(HomeFiltroVo filtro){
-        //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
-        return MovimentacaoDao.getInstancia(context).buscarDebitoPneus();
-    }
-
-
-    public Double buscarDebitoEletrico(HomeFiltroVo filtro){
-        //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
-        return MovimentacaoDao.getInstancia(context).buscarDebitoEletrico();
-    }
-
     public Double buscarDebitoByGasto(HomeFiltroVo filtro, Gasto gasto){
         //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
         return MovimentacaoDao.getInstancia(context).buscarDebitoByGasto(gasto);
