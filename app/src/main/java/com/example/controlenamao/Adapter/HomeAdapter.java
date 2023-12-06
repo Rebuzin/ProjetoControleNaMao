@@ -50,7 +50,7 @@ public class HomeAdapter extends ArrayAdapter<HomeVo> {
 
         if (obj != null) {
             textView.setText(obj.getTipo());
-            text2View.setText(String.format("%.2f", obj.getValor()));
+            text2View.setText("R$ " + String.format("%.2f", obj.getValor()));
 
             if (obj.getTipo().equals("Lucro Final")) {
                 textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
@@ -58,7 +58,7 @@ public class HomeAdapter extends ArrayAdapter<HomeVo> {
                 text2View.setTypeface(text2View.getTypeface(), Typeface.BOLD);
             } else {
                 text2View.setTextColor(Color.parseColor(colors[position]));
-                text2View.setText(String.format("%.2f", obj.getValor()));
+                text2View.setText("R$ " + String.format("%.2f", obj.getValor()));
             }
         }
 
