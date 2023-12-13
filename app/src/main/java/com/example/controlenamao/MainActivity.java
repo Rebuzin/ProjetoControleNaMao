@@ -75,15 +75,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
 
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.lnTeste, mainHomeFragment).commit();
-//                btHome.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//
-//                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                        startActivity(intent);
-//                    }
-//                });
+
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+
                 break;
 
             case R.id.nav_freight:
