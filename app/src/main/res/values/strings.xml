@@ -31,7 +31,7 @@
     <string name="inserirTipoFrete">Frete (Ex: Graneleiro, mudança, etc)</string>
     <string name="frete">Frete</string>
 
-    <string name="movimentacao">INSERIR NOVO CRÉDITO</string>
+    <string name="inserirNovoCredito">INSERIR NOVO CRÉDITO</string>
     <string name="inserirCredito">Insira o valor do Crédito</string>
 
     <string name="debito">INSERIR NOVO DÉBITO</string>
@@ -41,6 +41,13 @@
     <string name="inserirVeiculo">INSERIR NOVO VEÍCULO</string>
     <string name="inserirTipoVeiculo">Veiculo(Placa)</string>
     <string name="veiculo">Veiculo (Placa)</string>
+
+    <string name="dataInicial">Data Inicial</string>
+    <string name="dataFinal">Data Final</string>
+
+    <string name="movimentacao">Movimentação</string>
+
+    <string name="btFiltro">Botão para acessar filtros</string>
 
     <!--DESATIVAR ITEM-->
     <string name="desativar">Desativar</string>
@@ -66,6 +73,7 @@
     <string name="servicoComponente">Serviço/Componente</string>
     <string name="inserirDebito">Insira o valor do Débito</string>
     <string name="contato">Contato (45) 9 9853-3768</string>
+    <string name="buscar">buscar</string>
 
 
 </resources>

@@ -56,7 +56,7 @@
                 android:id="@+id/piechart"
                 android:layout_width="319dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:layout_weight="1"
@@ -191,25 +191,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <!--Relative layout to display -->
-            <!-- use of programming languages -->
             <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-                <!--Text view to use of -->
-            <!-- programming languages text-->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Movimentação"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <!--View to display the line-->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="11"
+                        android:text="@string/movimentacao"
+                        android:textColor="@color/black"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="25dp"
+                        android:backgroundTint="@color/white"
+                        android:icon="@drawable/nav_filter"
+                        android:src="@drawable/nav_filter"
+                        android:tooltipText="Filtro"
+                        tools:src="@drawable/nav_filter"
+                        android:contentDescription="@string/btFiltro" />
+
+<!--                    <Button-->
+<!--                        android:layout_width="48dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:layout_marginRight="25dp"-->
+<!--                        android:src="@drawable/nav_filter"-->
+<!--                        app:icon="@drawable/nav_filter" />-->
+
+                </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -238,7 +263,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_weight="1"
-                    android:layout_marginLeft="6dp"
+                    android:layout_marginStart="6dp"
                     android:id="@+id/lvHome"/>
 
             <!--View to display the line-->
