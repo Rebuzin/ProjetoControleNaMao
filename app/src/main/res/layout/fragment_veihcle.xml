@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="name"
-            android:digits="123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:digits="0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="@string/escreva"
             android:inputType="textCapCharacters"
             android:textColorHint="#757575"

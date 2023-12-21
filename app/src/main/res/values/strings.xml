@@ -74,6 +74,7 @@
     <string name="inserirDebito">Insira o valor do Débito</string>
     <string name="contato">Contato (45) 9 9853-3768</string>
     <string name="buscar">buscar</string>
+    <string name="filtre_o_seu_faturamento">Filtre o seu Faturamento</string>
 
 
 </resources>

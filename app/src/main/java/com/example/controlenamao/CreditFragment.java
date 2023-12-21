@@ -16,9 +16,11 @@ import android.widget.Toast;
 
 import com.example.controlenamao.Adapter.FreteAdapter;
 //import com.example.controlenamao.Adapter.MovimentacaoAdapter;
+import com.example.controlenamao.Adapter.HomeAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.CreditoController;
 import com.example.controlenamao.controller.FreteController;
+import com.example.controlenamao.controller.HomeController;
 import com.example.controlenamao.controller.VeiculoController;
 import com.example.controlenamao.masks.MaskedData;
 import com.example.controlenamao.model.Frete;
@@ -43,7 +45,7 @@ public class CreditFragment extends Fragment {
     private ArrayList<Frete> listaFretes;
     private ArrayList<Movimentacao> listaCredito;
 
-    private CreditoController cc;
+    private HomeController hc;
     private VeiculoController vc;
     private FreteController fc;
 
@@ -75,9 +77,10 @@ public class CreditFragment extends Fragment {
         lvCredito = getView().findViewById(R.id.lvCredito);
 
         lvCredito = getActivity().findViewById(R.id.lvCredito);
-        cc =  new CreditoController(getContext());
-        listaCredito = cc.retornarTodosCreditos();
+        hc =  new HomeController(getContext());
+        listaCredito = hc.retornarTodosCreditos();
 
+        HomeAdapter hAdapter = new HomeAdapter(this.getContext(), listaCredito );
 //        MovimentacaoAdapter mcAdapter = new MovimentacaoAdapter(this.getContext(), listaCredito);
 //        mcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
 //        QUEBRANDO

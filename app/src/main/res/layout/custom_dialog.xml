@@ -6,7 +6,28 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_margin="20dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:context="com.example.controlenamao.DialogFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="35dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/filtre_o_seu_faturamento"
+            android:textSize="21sp"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/filtros"
@@ -35,16 +56,16 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:text="@string/veiculo" />
 
                 <Spinner
                     android:id="@+id/spVeiculos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp"
                     android:contentDescription="@string/inserirTipoVeiculo"
                     android:minHeight="48dp" />
@@ -73,27 +94,27 @@
             android:baselineAligned="false">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:weightSum="2">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
                     android:text="@string/dataInicial" />
 
                 <EditText
                     android:id="@+id/edDataIn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:autofillHints="data"
                     android:hint="@string/campoData"
@@ -105,26 +126,27 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:weightSum="2">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:text="@string/dataFinal" />
 
                 <EditText
                     android:id="@+id/edDataFn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:autofillHints="data"
                     android:hint="@string/campoData"
@@ -140,19 +162,21 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/buscar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="35dp"
+        android:layout_marginBottom="35dp"
         android:elevation="10dp"
-        android:layout_gravity="center"
+        android:gravity="center"
         app:cardCornerRadius="10dp">
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
+                android:id="@+id/btBuscar"
                 android:text="@string/buscar"/>
 
     </androidx.cardview.widget.CardView>

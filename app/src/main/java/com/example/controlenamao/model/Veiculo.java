@@ -8,8 +8,6 @@ public class Veiculo {
     public Veiculo() {
     }
 
-
-
     public Veiculo(String renamed) {
         this.renamed = renamed;
     }

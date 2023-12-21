@@ -1,11 +1,17 @@
 package com.example.controlenamao;
 
+import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -17,9 +23,11 @@ import com.example.controlenamao.controller.CreditoController;
 import com.example.controlenamao.controller.DebitoController;
 import com.example.controlenamao.controller.HomeController;
 import com.example.controlenamao.controller.VeiculoController;
+import com.example.controlenamao.masks.MaskedData;
 import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
+import com.example.controlenamao.model.Veiculo;
 import com.example.controlenamao.model.vo.HomeVo;
 
 import org.eazegraph.lib.charts.PieChart;
@@ -38,6 +46,18 @@ public class FaturamentoFragment extends Fragment {
 
     private ListView lv;
 
+    private ImageButton btFiltro;
+    TextView infoTv;
+
+    private EditText edDataIn;
+    private EditText edDataFn;
+    private ImageButton btBuscar;
+    private Spinner spinnerVeiculos;
+
+    private ArrayList<Veiculo> listaVeiculos;
+
+    private VeiculoController vc;
+
 //    private ListView lvFaturamento;
 //    private CreditoController creditocontroller;
 //    private DebitoController debitocontroller;
@@ -52,6 +72,15 @@ public class FaturamentoFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         controller = new HomeController(getContext());
+        btFiltro = getView().findViewById(R.id.btFiltro);
+        btFiltro = getActivity().findViewById(R.id.btFiltro);
+
+        btFiltro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomDialog();
+            }
+        });
 
 //        tvCombustivel = getView().findViewById(R.id.tvCombustivel);
 //        tvPneus = getView().findViewById(R.id.tvPneus);
@@ -104,6 +133,47 @@ public class FaturamentoFragment extends Fragment {
         colors[4] = "#2F4F4F";
 
         setData();
+    }
+
+    //FUNÇÃO PARA MOSTRAR O DIALOG CUSTOMIZADO DE BUSCA
+    void showCustomDialog() {
+        final Dialog dialog = new Dialog(this.getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.custom_dialog);
+
+        final EditText edDataIn = dialog.findViewById(R.id.edDataIn);
+        final EditText edDataFn = dialog.findViewById(R.id.edDataFn);
+        final Spinner spinnerVeiculos = dialog.findViewById(R.id.spVeiculos);
+        Button btBuscar = dialog.findViewById(R.id.btBuscar);
+
+//        spinnerVeiculos = getActivity().findViewById(R.id.spVeiculos);
+        vc =  new VeiculoController(getContext());
+        listaVeiculos = vc.retornarTodosVeiculos();
+        VeiculoAdapter vcAdapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
+        vcAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerVeiculos.setAdapter(vcAdapter);
+
+//        MÁSCARA PARA O CAMPO DATA
+        MaskedData.addDateMask(edDataIn);
+        MaskedData.addDateMask(edDataFn);
+
+//        final Spinner nameEt = dialog.findViewById(R.id.spVeiculos);
+//        final EditText dataIn = dialog.findViewById(R.id.edDataIn);
+//        final EditText dataFn = dialog.findViewById(R.id.edDataFn);
+//        Button btBuscar = dialog.findViewById(R.id.btBuscar);
+//
+        btBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = String.valueOf(spinnerVeiculos.getSelectedItem());
+                String dataInicial = edDataIn.getText().toString();
+                String dataFinal = edDataFn.getText().toString();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     @Override

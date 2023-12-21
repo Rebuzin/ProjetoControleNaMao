@@ -11,6 +11,7 @@ import android.util.Log;
 import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
+import com.example.controlenamao.model.Veiculo;
 
 import java.util.ArrayList;
 
@@ -168,5 +169,28 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
             Log.e("ERRO", "MovimentacaoDao.buscaSaldoCombustivel(): " + ex.getMessage());
         }
         return valor;
+    }
+    public ArrayList<Movimentacao> getAll(){
+        ArrayList<Veiculo> lista = new ArrayList<>();
+        Double valor = 0d;
+        try {
+
+            String sql = "select sum(VALOR) " +
+                    "from MOVIMENTACAO " +
+                    "where TIPO = 'C' AND FRETE_ID NOT NULL;"; //Busca todos os creditos de frete
+
+            Cursor c = bd.rawQuery(sql, null);
+            if (c.moveToFirst()) {
+                valor = c.getDouble(0);
+            } else {
+                valor = 0d;
+            }
+            lista.add(valor);
+
+            c.close();
+
+        } catch (SQLException ex) {
+            Log.e("ERRO", "MovimentacaoDao.buscaSaldoCombustivel(): " + ex.getMessage());
+        }
     }
 }

@@ -6,6 +6,7 @@ import com.example.controlenamao.dao.GastoDao;
 import com.example.controlenamao.dao.MovimentacaoDao;
 import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
 import com.example.controlenamao.model.Gasto;
+import com.example.controlenamao.model.Movimentacao;
 
 import java.util.ArrayList;
 
@@ -32,5 +33,10 @@ public class HomeController {
         //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
         return GastoDao.getInstancia(context).getAll();
     }
+
+    public ArrayList<Movimentacao> retornarTodosCreditos(){
+        return MovimentacaoDao.getInstancia(context).retornarTodosCreditos();
+    }
+
 
 }

@@ -216,6 +216,7 @@
                     <ImageButton
                         android:layout_width="48dp"
                         android:layout_height="48dp"
+                        android:id="@+id/btFiltro"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="25dp"
                         android:backgroundTint="@color/white"
