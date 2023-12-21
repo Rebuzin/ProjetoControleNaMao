@@ -12,7 +12,9 @@ import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;
+import com.example.controlenamao.model.vo.HomeVo;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class MovimentacaoDao implements GenericDao<Movimentacao> {
@@ -170,27 +172,27 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
         }
         return valor;
     }
-    public ArrayList<Movimentacao> getAll(){
-        ArrayList<Veiculo> lista = new ArrayList<>();
-        Double valor = 0d;
+
+    public ArrayList<Movimentacao> getAllCredito() {
+        ArrayList<Movimentacao> lista = new ArrayList<>();
         try {
+            Cursor cursor = bd.query(tableName, colunas,
+                    null, null,
+                    "TIPO = C", "TIPO = C", "RENAMED");
+            if (cursor.moveToFirst()) {
+                do {
+                    Movimentacao movimentacao = new Movimentacao();
+                    movimentacao.setValor(cursor.getDouble(0));
+//                    movimentacao.setData(Date.valueOf(String.valueOf(1)));
+                    movimentacao.setTipo(cursor.getString(2));
+//                    movimentacao.setVeiculo(Long.getId(String.valueOf(3)));
 
-            String sql = "select sum(VALOR) " +
-                    "from MOVIMENTACAO " +
-                    "where TIPO = 'C' AND FRETE_ID NOT NULL;"; //Busca todos os creditos de frete
-
-            Cursor c = bd.rawQuery(sql, null);
-            if (c.moveToFirst()) {
-                valor = c.getDouble(0);
-            } else {
-                valor = 0d;
+                    lista.add(movimentacao);
+                } while (cursor.moveToNext());
             }
-            lista.add(valor);
-
-            c.close();
-
         } catch (SQLException ex) {
-            Log.e("ERRO", "MovimentacaoDao.buscaSaldoCombustivel(): " + ex.getMessage());
+            Log.e("ERRO", "VeiculoDao.getAll(): " + ex.getMessage());
         }
+        return lista;
     }
 }

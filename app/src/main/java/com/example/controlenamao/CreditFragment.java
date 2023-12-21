@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.controlenamao.Adapter.CreditoAdapter;
 import com.example.controlenamao.Adapter.FreteAdapter;
 //import com.example.controlenamao.Adapter.MovimentacaoAdapter;
 import com.example.controlenamao.Adapter.HomeAdapter;
@@ -26,6 +27,7 @@ import com.example.controlenamao.masks.MaskedData;
 import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;
+import com.example.controlenamao.model.vo.HomeVo;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -80,11 +82,10 @@ public class CreditFragment extends Fragment {
         hc =  new HomeController(getContext());
         listaCredito = hc.retornarTodosCreditos();
 
-        HomeAdapter hAdapter = new HomeAdapter(this.getContext(), listaCredito );
-//        MovimentacaoAdapter mcAdapter = new MovimentacaoAdapter(this.getContext(), listaCredito);
-//        mcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        CreditoAdapter cAdapter = new CreditoAdapter(this.getContext(), listaCredito);
+        cAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
 //        QUEBRANDO
-//        lvCredito.setAdapter(mcAdapter);
+        lvCredito.setAdapter(cAdapter);
 
 //      MÁSCARA PARA O CAMPO DATA
         MaskedData.addDateMask(edDataCredito);

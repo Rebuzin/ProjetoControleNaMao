@@ -35,7 +35,7 @@ public class HomeController {
     }
 
     public ArrayList<Movimentacao> retornarTodosCreditos(){
-        return MovimentacaoDao.getInstancia(context).retornarTodosCreditos();
+        return MovimentacaoDao.getInstancia(context).getAllCredito();
     }
 
 
