@@ -73,9 +73,10 @@ public class DebitFragment extends Fragment {
         spinnerVeiculos.setAdapter(vcAdapter);
         spinnerGastos.setAdapter(gcAdapter);
 
-        lvDebito = getView().findViewById(R.id.lvCredito);
+//        lvDebito = getView().findViewById(R.id.lvCredito);
+//
+//        lvDebito = getActivity().findViewById(R.id.lvCredito);
 
-        lvDebito = getActivity().findViewById(R.id.lvCredito);
         cc =  new DebitoController(getContext());
         listaDebito = cc.retornarTodosDebitos();
 

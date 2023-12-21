@@ -9,9 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.controlenamao.R;
 import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class CreditoAdapter extends ArrayAdapter<Movimentacao> {
@@ -31,14 +33,20 @@ public class CreditoAdapter extends ArrayAdapter<Movimentacao> {
 
     private View createView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_spinner_item, parent, false);
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.list_item_credit, parent, false);
         }
 
         TextView textView = convertView.findViewById(android.R.id.text1);
+        TextView textView2 = convertView.findViewById(android.R.id.text2);
         Movimentacao movimentacao = getItem(position);
 
         if (movimentacao != null) {
-            textView.setText((int) movimentacao.getValor());
+
+            SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
+
+            textView.setText(dt1.format(movimentacao.getData()));
+            textView2.setText(String.valueOf(movimentacao.getValor()));
         }
 
         return convertView;

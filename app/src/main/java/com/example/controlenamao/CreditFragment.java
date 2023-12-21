@@ -38,7 +38,9 @@ public class CreditFragment extends Fragment {
     private EditText edDataCredito;
     private Button btCadastroCredito;
     private Button btHome;
-    private ListView lvCredito;
+
+    private ListView lv;
+
     private CreditoController creditocontroller;
     private Spinner spinnerVeiculos;
     private Spinner spinnerFretes;
@@ -76,16 +78,15 @@ public class CreditFragment extends Fragment {
         spinnerVeiculos.setAdapter(vcAdapter);
         spinnerFretes.setAdapter(fcAdapter);
 
-        lvCredito = getView().findViewById(R.id.lvCredito);
 
-        lvCredito = getActivity().findViewById(R.id.lvCredito);
+
+        lv = getActivity().findViewById(R.id.lvLista);
         hc =  new HomeController(getContext());
         listaCredito = hc.retornarTodosCreditos();
 
         CreditoAdapter cAdapter = new CreditoAdapter(this.getContext(), listaCredito);
         cAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
-//        QUEBRANDO
-        lvCredito.setAdapter(cAdapter);
+        lv.setAdapter(cAdapter);
 
 //      MÁSCARA PARA O CAMPO DATA
         MaskedData.addDateMask(edDataCredito);

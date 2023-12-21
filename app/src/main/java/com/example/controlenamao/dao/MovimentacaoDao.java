@@ -176,14 +176,18 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
     public ArrayList<Movimentacao> getAllCredito() {
         ArrayList<Movimentacao> lista = new ArrayList<>();
         try {
-            Cursor cursor = bd.query(tableName, colunas,
-                    null, null,
-                    "TIPO = C", "TIPO = C", "RENAMED");
+
+            String sql = "select VALOR, DATA, TIPO, VEICULO_ID " +
+                    "from MOVIMENTACAO " +
+                    "where TIPO = 'C' AND FRETE_ID NOT NULL " +
+                    "ORDER BY DATA ;";
+
+            Cursor cursor = bd.rawQuery(sql, null);
             if (cursor.moveToFirst()) {
                 do {
                     Movimentacao movimentacao = new Movimentacao();
                     movimentacao.setValor(cursor.getDouble(0));
-//                    movimentacao.setData(Date.valueOf(String.valueOf(1)));
+                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(1))));
                     movimentacao.setTipo(cursor.getString(2));
 //                    movimentacao.setVeiculo(Long.getId(String.valueOf(3)));
 

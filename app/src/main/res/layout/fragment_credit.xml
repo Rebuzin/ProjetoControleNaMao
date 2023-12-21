@@ -11,6 +11,13 @@
         android:layout_height="match_parent"
         android:padding="50dp">
 
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/lvLista"/>
+
+
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,11 +109,6 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:orientation="vertical">-->
 
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:id="@+id/lvCredito"/>
 
 <!--        </LinearLayout>-->
 
