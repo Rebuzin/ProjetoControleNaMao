@@ -115,6 +115,8 @@ public class CreditFragment extends Fragment {
             }
         });
 
+        atualizaLista();
+
 //      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
         btHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,6 +179,12 @@ public class CreditFragment extends Fragment {
                     Toast.makeText(getContext(),
                             "Credito cadastrado com sucesso!!",
                             Toast.LENGTH_LONG).show();
+                    listaCredito = hc.retornarTodosCreditos();
+                    CreditoAdapter cAdapter = new CreditoAdapter(this.getContext(), listaCredito);
+                    cAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+                    lv.setAdapter(cAdapter);
+                    edDataCredito.setText("");
+                    edValorCredito.setText("");
                 } else {
                     Toast.makeText(getContext(),
                             "Erro ao cadastrar Credito, verifique LOG.",

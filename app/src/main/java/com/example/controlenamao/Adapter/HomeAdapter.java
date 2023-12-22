@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.controlenamao.R;
-import com.example.controlenamao.model.Veiculo;
 import com.example.controlenamao.model.vo.HomeVo;
 
 import java.util.List;
@@ -26,6 +25,12 @@ public class HomeAdapter extends ArrayAdapter<HomeVo> {
         colors[2] = "#FFC107";
         colors[3] = "#00008B";
         colors[4] = "#2F4F4F";
+
+        colors[5] = "#C8B7E7";
+        colors[6] = "#118AB2";
+        colors[7] = "#304D63";
+        colors[8] = "#BSE7E8";
+        colors[9] = "#F2D096";
     }
 
     @Override

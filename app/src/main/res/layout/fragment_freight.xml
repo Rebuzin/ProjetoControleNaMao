@@ -35,7 +35,7 @@
             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ç"
             android:inputType="textCapSentences|textAutoCorrect"
             android:minHeight="48dp"
-            android:textColorHint="#757575" />
+            android:textColorHint="@color/Hint" />
 
         <Button
             android:id="@+id/btCadastroFrete"

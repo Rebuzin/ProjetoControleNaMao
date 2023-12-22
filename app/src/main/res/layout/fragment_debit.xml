@@ -61,7 +61,7 @@
             android:hint="@string/campoData"
             android:inputType="date"
             android:minHeight="48dp"
-            android:textColorHint="#757575" />
+            android:textColorHint="@color/Hint" />
 
         <TextView
             android:layout_width="match_parent"
@@ -80,7 +80,7 @@
             android:imeOptions="actionDone"
             android:inputType="text"
             android:minHeight="48dp"
-            android:textColorHint="#757575" />
+            android:textColorHint="@color/Hint" />
 
         <Button
             android:id="@+id/btCadastroDebito"

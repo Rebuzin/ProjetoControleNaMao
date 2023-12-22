@@ -35,7 +35,7 @@
             android:digits="0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="@string/escreva"
             android:inputType="textCapCharacters"
-            android:textColorHint="#757575"
+            android:textColorHint="@color/Hint"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <Button

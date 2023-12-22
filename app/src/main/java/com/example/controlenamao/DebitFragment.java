@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.controlenamao.Adapter.CreditoAdapter;
 import com.example.controlenamao.Adapter.DebitoAdapter;
 import com.example.controlenamao.Adapter.GastoAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
@@ -119,6 +120,8 @@ public class DebitFragment extends Fragment {
             }
         });
 
+        atualizaLista();
+
 //      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
         btHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,8 +181,12 @@ public class DebitFragment extends Fragment {
                     Toast.makeText(getContext(),
                             "Debito cadastrado com sucesso!!",
                             Toast.LENGTH_LONG).show();
-                            edValorDebito.getText().toString();
-                            edDataDebito.getText();
+                    listaDebito = hc.retornarTodosDebitos();
+                    DebitoAdapter cAdapter = new DebitoAdapter(this.getContext(), listaDebito);
+                    cAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+                    lv.setAdapter(cAdapter);
+                    edDataDebito.setText("");
+                    edValorDebito.setText("");
                 } else {
                     Toast.makeText(getContext(),
                             "Erro ao cadastrar Debito, verifique LOG.",

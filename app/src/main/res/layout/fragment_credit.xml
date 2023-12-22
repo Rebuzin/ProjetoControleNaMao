@@ -74,12 +74,10 @@
             android:digits="0123456789 ."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="value"
             android:hint="@string/inserirCredito"
-            android:imeOptions="actionDone"
             android:inputType="text"
             android:minHeight="48dp"
-            android:textColorHint="#757575" />
+            android:textColorHint="@color/Hint" />
 
         <Button
         android:id="@+id/btCadastroCredito"
