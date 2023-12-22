@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.controlenamao.dao.GastoDao;
 import com.example.controlenamao.dao.MovimentacaoDao;
 import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
+import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
 
@@ -39,7 +40,10 @@ public class HomeController {
     }
 
     public Long apagarCredito(Movimentacao movimentacao){
-        return MovimentacaoDao.getInstancia(context).delete(movimentacao);
+        return MovimentacaoDao.getInstancia(context).deleteCredito(movimentacao);
+    }
+    public Long apagarDebito(Movimentacao movimentacao){
+        return MovimentacaoDao.getInstancia(context).deleteDebito(movimentacao);
     }
 
     public ArrayList<Movimentacao> retornarTodosDebitos(){

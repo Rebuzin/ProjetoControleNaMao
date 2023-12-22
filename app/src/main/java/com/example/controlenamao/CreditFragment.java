@@ -112,7 +112,6 @@ public class CreditFragment extends Fragment {
                         atualizaLista();
                     }});
                 adb.show();
-
             }
         });
 

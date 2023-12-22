@@ -8,9 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import com.example.controlenamao.helper.SQLiteDataHelper;
+import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MovimentacaoDao implements GenericDao<Movimentacao> {
 
@@ -88,6 +90,25 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
 
     @Override
     public long delete(Movimentacao obj) {
+        return 0;
+    }
+
+    public long deleteCredito(Movimentacao frete) {
+
+            String sql = "delete sum(VALOR) " +
+                    "from MOVIMENTACAO " +
+                    "where TIPO = 'C' AND FRETE_ID = " + frete.getId() + " ;"; //GASTO ID 3 = COMBUSTIVEL DE FORMA FIXA
+
+            Cursor c = bd.rawQuery(sql, null);
+
+            c.close();
+
+        return 0;
+    }
+
+
+
+    public long deleteDebito(Movimentacao obj) {
         String[]identificador = {String.valueOf(obj.getId())};
         return bd.delete(tableName,"ID = ?",identificador);
     }
@@ -202,7 +223,7 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
 
             String sql = "select VALOR, DATA, TIPO, VEICULO_ID " +
                     "from MOVIMENTACAO " +
-                    "where TIPO = 'D' AND FRETE_ID NOT NULL " +
+                    "where TIPO = 'D' AND GASTO_ID NOT NULL " +
                     "ORDER BY DATA ;";
 
             Cursor cursor = bd.rawQuery(sql, null);

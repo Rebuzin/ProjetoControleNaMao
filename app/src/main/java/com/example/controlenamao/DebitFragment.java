@@ -1,5 +1,7 @@
 package com.example.controlenamao;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -94,6 +97,28 @@ public class DebitFragment extends Fragment {
             }
         });
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                AlertDialog.Builder adb=new AlertDialog.Builder(getActivity());
+                adb.setTitle("Deletar?");
+                adb.setMessage("Deseja remover esse débito? ");
+                //PEGANDO O ID DA LISTA NÃO DO BANCO
+                dAdapter.getItem((int) id);
+                adb.setNegativeButton("Não", null);
+                adb.setPositiveButton("Sim", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        hc.apagarDebito(listaDebito.get(position));
+
+                        listaDebito.remove(position);
+
+                        atualizaLista();
+                    }});
+                adb.show();
+            }
+        });
+
 //      IMPLEMENTAÇÃO DE BOTÃO VOLTAR
         btHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,5 +189,9 @@ public class DebitFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private void atualizaLista() {
+        DebitoAdapter adapter = new DebitoAdapter(this.getContext(), listaDebito);
+        lv.setAdapter(adapter);
     }
 }
