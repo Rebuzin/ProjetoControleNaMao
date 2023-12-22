@@ -43,7 +43,7 @@ public class DebitoAdapter extends ArrayAdapter<Movimentacao> {
             SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
 
 //            textView.setText(dt1.format(movimentacao.getData()));
-            textView2.setText(String.valueOf(movimentacao.getValor()));
+            textView2.setText(String.valueOf("R$ " + movimentacao.getValor()));
         }
 
         return convertView;
