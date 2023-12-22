@@ -40,7 +40,7 @@ public class CreditoAdapter extends ArrayAdapter<Movimentacao> {
 
             SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
 
-//            textView.setText(dt1.format(movimentacao.getData()));
+            textView.setText(dt1.format(movimentacao.getData()));
             textView2.setText(String.valueOf("R$ " + movimentacao.getValor()));
         }
 

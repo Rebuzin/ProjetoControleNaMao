@@ -8,11 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import com.example.controlenamao.helper.SQLiteDataHelper;
+import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
 import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -95,12 +97,6 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
         return bd.delete(tableName,"ID = ?",identificador);
     }
 
-
-    public long deleteDebito(Movimentacao obj) {
-        String[]identificador = {String.valueOf(obj.getId())};
-        return bd.delete(tableName,"ID = ?",identificador);
-    }
-
     @Override
     public ArrayList<Movimentacao> getAll() {
         return null;
@@ -132,13 +128,21 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
     //////////////////////////////
     //  Busca saldos
     //////////////////////////////
-    public Double buscarDebitoByGasto(Gasto gasto) {
+    public Double buscarDebitoByGasto(Gasto gasto, HomeFiltroVo filtro) {
         Double valor = 0d;
         try {
 
             String sql = "select sum(VALOR) " +
                     "from MOVIMENTACAO " +
-                    "where TIPO = 'D' AND GASTO_ID = " + gasto.getId() + " ;"; //GASTO ID 3 = COMBUSTIVEL DE FORMA FIXA
+                    "where TIPO = 'D' AND GASTO_ID = " + gasto.getId() + "" +
+                    " ;"; //GASTO ID 3 = COMBUSTIVEL DE FORMA FIXA
+
+            if(filtro != null && filtro.getIdVeiculo() != null){
+                sql = "select sum(VALOR) " +
+                        "from MOVIMENTACAO " +
+                        "where TIPO = 'D' AND GASTO_ID = " + gasto.getId() + " AND VEICULO_ID = " + filtro.getIdVeiculo() +
+                        " ;"; //GASTO ID 3 = COMBUSTIVEL DE FORMA FIXA
+            }
 
             Cursor c = bd.rawQuery(sql, null);
             if (c.moveToFirst()) {
@@ -155,14 +159,19 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
         return valor;
     }
 
-    public Double buscarCreditosFrete() {
+    public Double buscarCreditosFrete(HomeFiltroVo filtro) {
         Double valor = 0d;
         try {
 
             String sql = "select sum(VALOR) " +
                     "from MOVIMENTACAO " +
                     "where TIPO = 'C' AND FRETE_ID NOT NULL;"; //Busca todos os creditos de frete
-
+            if(filtro != null && filtro.getIdVeiculo() != null){
+                sql = "select sum(VALOR) " +
+                        "from MOVIMENTACAO " +
+                        "where TIPO = 'C' AND FRETE_ID NOT NULL AND VEICULO_ID = " + filtro.getIdVeiculo() +
+                        " ;"; //GASTO ID 3 = COMBUSTIVEL DE FORMA FIXA
+            }
             Cursor c = bd.rawQuery(sql, null);
             if (c.moveToFirst()) {
                 valor = c.getDouble(0);
@@ -190,10 +199,13 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
             Cursor cursor = bd.rawQuery(sql, null);
             if (cursor.moveToFirst()) {
                 do {
+
+                    SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-mm-dd");
+
                     Movimentacao movimentacao = new Movimentacao();
                     movimentacao.setId(cursor.getInt(0));
                     movimentacao.setValor(cursor.getDouble(1));
-                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(2))));
+                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(2).replaceAll("-03:00", ""))));
                     movimentacao.setTipo(cursor.getString(3));
 //                    movimentacao.setVeiculo(Long.getId(String.valueOf(3)));
 
@@ -221,7 +233,7 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
                     Movimentacao movimentacao = new Movimentacao();
                     movimentacao.setId(cursor.getInt(0));
                     movimentacao.setValor(cursor.getDouble(1));
-                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(2))));
+                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(2).replaceAll("-03:00", ""))));
                     movimentacao.setTipo(cursor.getString(3));
 //                    movimentacao.setVeiculo(Long.getId(String.valueOf(3)));
 

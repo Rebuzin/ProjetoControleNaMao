@@ -21,13 +21,13 @@ public class HomeController {
 
     public Double buscarDebitoByGasto(HomeFiltroVo filtro, Gasto gasto){
         //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
-        return MovimentacaoDao.getInstancia(context).buscarDebitoByGasto(gasto);
+        return MovimentacaoDao.getInstancia(context).buscarDebitoByGasto(gasto, filtro);
     }
 
 
     public Double buscarCreditosFrete(HomeFiltroVo filtro){
         //Aqui podeira converter os filtros para mandar pro DAO, por exemplo, periodo de datas, etc
-        return MovimentacaoDao.getInstancia(context).buscarCreditosFrete();
+        return MovimentacaoDao.getInstancia(context).buscarCreditosFrete(filtro);
     }
 
     public ArrayList<Gasto> buscarTodosGastos(){
@@ -43,7 +43,7 @@ public class HomeController {
         return MovimentacaoDao.getInstancia(context).delete(movimentacao);
     }
     public Long apagarDebito(Movimentacao movimentacao){
-        return MovimentacaoDao.getInstancia(context).deleteDebito(movimentacao);
+        return MovimentacaoDao.getInstancia(context).delete(movimentacao);
     }
 
     public ArrayList<Movimentacao> retornarTodosDebitos(){

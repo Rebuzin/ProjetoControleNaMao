@@ -13,8 +13,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import com.example.controlenamao.Adapter.HomeAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.HomeController;
@@ -24,8 +26,10 @@ import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Veiculo;
 import com.example.controlenamao.model.vo.HomeVo;
+
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +39,7 @@ public class FaturamentoFragment extends Fragment {
     TextView tvCombustivel, tvLucroFinal, tvPneus, tvServicoEletrico;
     PieChart pieChart;
     private HomeController controller;
-    private String [] colors = new String[10];
+    private String[] colors = new String[10];
 
     private ListView lv;
 
@@ -50,6 +54,8 @@ public class FaturamentoFragment extends Fragment {
     private ArrayList<Veiculo> listaVeiculos;
 
     private VeiculoController vc;
+
+    private Long veiculoId = null;
 
 //    private ListView lvFaturamento;
 //    private CreditoController creditocontroller;
@@ -141,7 +147,7 @@ public class FaturamentoFragment extends Fragment {
         Button btBuscar = dialog.findViewById(R.id.btBuscar);
 
 //        spinnerVeiculos = getActivity().findViewById(R.id.spVeiculos);
-        vc =  new VeiculoController(getContext());
+        vc = new VeiculoController(getContext());
         listaVeiculos = vc.retornarTodosVeiculos();
         VeiculoAdapter vcAdapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
         vcAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -159,9 +165,15 @@ public class FaturamentoFragment extends Fragment {
         btBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                veiculoId = ((Veiculo)spinnerVeiculos.getSelectedItem()).getId();
+
                 String name = String.valueOf(spinnerVeiculos.getSelectedItem());
                 String dataInicial = edDataIn.getText().toString();
                 String dataFinal = edDataFn.getText().toString();
+
+
+                setData();
                 dialog.dismiss();
             }
         });
@@ -178,43 +190,41 @@ public class FaturamentoFragment extends Fragment {
 
     private void setData() {
 
+        pieChart.clearChart();
+
         List<HomeVo> listHome = new ArrayList<>();
 
         ArrayList<Gasto> listaGasto = controller.buscarTodosGastos();
 
         HomeFiltroVo filtro = new HomeFiltroVo();
+        if(veiculoId != null){
+            filtro.setIdVeiculo(veiculoId);
+        }
 
         Double gastosTotais = 0d;
 
         int contador = 0;
-        for(Gasto gasto : listaGasto){
+        for (Gasto gasto : listaGasto) {
 
             Double valorDebito = controller.buscarDebitoByGasto(filtro, gasto);
 
-//            if(contador == 0){
-//                tvCombustivel.setText("R$" + Double.toString(valorDebito));
-//            }
-//            if(contador == 1) {
-//                tvPneus.setText("R$" + Double.toString(valorDebito));
-//            }
-//            if(contador == 2) {
-//                tvServicoEletrico.setText("R$" + Double.toString(valorDebito));
-//            }
+            if (valorDebito > 0d) {
 
-            pieChart.addPieSlice(
-                    new PieModel(
-                            gasto.getName(),
-                            valorDebito.floatValue(),
-                            Color.parseColor(colors[contador])));
+                pieChart.addPieSlice(
+                        new PieModel(
+                                gasto.getName(),
+                                valorDebito.floatValue(),
+                                Color.parseColor(colors[contador])));
 
-            gastosTotais = gastosTotais + valorDebito;
+                gastosTotais = gastosTotais + valorDebito;
 
-            HomeVo homeVo = new HomeVo();
-            homeVo.setTipo(gasto.getName());
-            homeVo.setValor(valorDebito.floatValue());
-            listHome.add(homeVo);
+                HomeVo homeVo = new HomeVo();
+                homeVo.setTipo(gasto.getName());
+                homeVo.setValor(valorDebito.floatValue());
+                listHome.add(homeVo);
 
-            contador = contador +1;
+                contador = contador + 1;
+            }
 
         }
 
@@ -228,7 +238,7 @@ public class FaturamentoFragment extends Fragment {
         listHome.add(homeVo);
 
 
-         //Setando list
+        //Setando list
         HomeAdapter gcAdapter = new HomeAdapter(this.getContext(), listHome);
         gcAdapter.setDropDownViewResource(android.R.layout.simple_list_item_activated_2);
         lv.setAdapter(gcAdapter);
