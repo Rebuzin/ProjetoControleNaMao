@@ -1,23 +1,22 @@
 package com.example.controlenamao;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.example.controlenamao.Adapter.CreditoAdapter;
 import com.example.controlenamao.Adapter.FreteAdapter;
-//import com.example.controlenamao.Adapter.MovimentacaoAdapter;
-import com.example.controlenamao.Adapter.HomeAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.CreditoController;
 import com.example.controlenamao.controller.FreteController;
@@ -27,8 +26,6 @@ import com.example.controlenamao.masks.MaskedData;
 import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;
-import com.example.controlenamao.model.vo.HomeVo;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -78,9 +75,7 @@ public class CreditFragment extends Fragment {
         spinnerVeiculos.setAdapter(vcAdapter);
         spinnerFretes.setAdapter(fcAdapter);
 
-
-
-        lv = getActivity().findViewById(R.id.lvLista);
+        lv = getActivity().findViewById(R.id.lvListaC);
         hc =  new HomeController(getContext());
         listaCredito = hc.retornarTodosCreditos();
 
@@ -95,6 +90,29 @@ public class CreditFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 salvarCredito();
+            }
+        });
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                AlertDialog.Builder adb=new AlertDialog.Builder(getActivity());
+                adb.setTitle("Deletar?");
+                adb.setMessage("Deseja remover esse crédito? ");
+                //PEGANDO O ID DA LISTA NÃO DO BANCO
+                cAdapter.getItem((int) id);
+                adb.setNegativeButton("Não", null);
+                adb.setPositiveButton("Sim", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        hc.apagarCredito(listaCredito.get(position));
+
+                        listaCredito.remove(position);
+
+                        atualizaLista();
+                    }});
+                adb.show();
+
             }
         });
 
@@ -169,5 +187,9 @@ public class CreditFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private void atualizaLista(){
+        CreditoAdapter adapter = new CreditoAdapter(this.getContext(), listaCredito);
+        lv.setAdapter(adapter);
     }
 }

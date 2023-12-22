@@ -38,5 +38,13 @@ public class HomeController {
         return MovimentacaoDao.getInstancia(context).getAllCredito();
     }
 
+    public Long apagarCredito(Movimentacao movimentacao){
+        return MovimentacaoDao.getInstancia(context).delete(movimentacao);
+    }
+
+    public ArrayList<Movimentacao> retornarTodosDebitos(){
+        return MovimentacaoDao.getInstancia(context).getAllDebito();
+    }
+
 
 }

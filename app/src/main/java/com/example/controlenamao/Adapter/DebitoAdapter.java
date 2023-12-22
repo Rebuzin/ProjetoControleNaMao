@@ -6,13 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import com.example.controlenamao.R;
 import com.example.controlenamao.model.Movimentacao;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class CreditoAdapter extends ArrayAdapter<Movimentacao> {
-    public CreditoAdapter(Context context, List<Movimentacao> movimentacao) {
+public class DebitoAdapter extends ArrayAdapter<Movimentacao> {
+    public DebitoAdapter(Context context, List<Movimentacao> movimentacao) {
         super(context, 0, movimentacao);
     }
 
@@ -29,7 +31,7 @@ public class CreditoAdapter extends ArrayAdapter<Movimentacao> {
     private View createView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.list_item_credit, parent, false);
+            convertView = inflater.inflate(R.layout.list_item_debit, parent, false);
         }
 
         TextView textView = convertView.findViewById(android.R.id.text1);

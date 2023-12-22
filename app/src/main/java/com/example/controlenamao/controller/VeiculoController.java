@@ -2,11 +2,8 @@ package com.example.controlenamao.controller;
 
 import android.content.Context;
 import android.widget.Toast;
-
-import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.dao.VeiculoDao;
 import com.example.controlenamao.model.Veiculo;
-
 import java.util.ArrayList;
 
 public class VeiculoController {

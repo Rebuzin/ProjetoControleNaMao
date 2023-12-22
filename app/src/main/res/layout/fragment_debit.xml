@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.controlenamao.DebitFragment">
 
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="50dp">
 
         <TextView
@@ -43,7 +44,8 @@
             android:id="@+id/spGastos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:layout_width="match_parent"
@@ -93,25 +95,14 @@
             android:text="@string/inserir" />
 
         <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/lvDebito"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvListaD"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
-
-<!--            <Button-->
-<!--                android:id="@+id/btExcluirDebito"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:backgroundTint="@color/Negacao"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:layout_margin="10dp"-->
-<!--                android:text="@string/excluir"/>-->
 
             <Button
                 android:id="@+id/btHome"
@@ -125,6 +116,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
 
 </FrameLayout>

@@ -7,14 +7,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
 import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
-import com.example.controlenamao.model.Veiculo;
-import com.example.controlenamao.model.vo.HomeVo;
-
-import java.sql.Date;
 import java.util.ArrayList;
 
 public class MovimentacaoDao implements GenericDao<Movimentacao> {
@@ -93,7 +88,8 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
 
     @Override
     public long delete(Movimentacao obj) {
-        return 0;
+        String[]identificador = {String.valueOf(obj.getId())};
+        return bd.delete(tableName,"ID = ?",identificador);
     }
 
     @Override
@@ -187,15 +183,42 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
                 do {
                     Movimentacao movimentacao = new Movimentacao();
                     movimentacao.setValor(cursor.getDouble(0));
-                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(1))));
-                    movimentacao.setTipo(cursor.getString(2));
+//                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(1))));
+                    movimentacao.setTipo(cursor.getString(1));
 //                    movimentacao.setVeiculo(Long.getId(String.valueOf(3)));
 
                     lista.add(movimentacao);
                 } while (cursor.moveToNext());
             }
         } catch (SQLException ex) {
-            Log.e("ERRO", "VeiculoDao.getAll(): " + ex.getMessage());
+            Log.e("ERRO", "MovimentacaoDao.getAll(): " + ex.getMessage());
+        }
+        return lista;
+    }
+
+    public ArrayList<Movimentacao> getAllDebito() {
+        ArrayList<Movimentacao> lista = new ArrayList<>();
+        try {
+
+            String sql = "select VALOR, DATA, TIPO, VEICULO_ID " +
+                    "from MOVIMENTACAO " +
+                    "where TIPO = 'D' AND FRETE_ID NOT NULL " +
+                    "ORDER BY DATA ;";
+
+            Cursor cursor = bd.rawQuery(sql, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    Movimentacao movimentacao = new Movimentacao();
+                    movimentacao.setValor(cursor.getDouble(0));
+//                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(1))));
+                    movimentacao.setTipo(cursor.getString(1));
+//                    movimentacao.setVeiculo(Long.getId(String.valueOf(3)));
+
+                    lista.add(movimentacao);
+                } while (cursor.moveToNext());
+            }
+        } catch (SQLException ex) {
+            Log.e("ERRO", "MovimentacaoDao.getAll(): " + ex.getMessage());
         }
         return lista;
     }

@@ -13,26 +13,19 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.controlenamao.Adapter.HomeAdapter;
 import com.example.controlenamao.Adapter.VeiculoAdapter;
-import com.example.controlenamao.controller.CreditoController;
-import com.example.controlenamao.controller.DebitoController;
 import com.example.controlenamao.controller.HomeController;
 import com.example.controlenamao.controller.VeiculoController;
 import com.example.controlenamao.masks.MaskedData;
 import com.example.controlenamao.model.FiltroVo.HomeFiltroVo;
 import com.example.controlenamao.model.Gasto;
-import com.example.controlenamao.model.Movimentacao;
 import com.example.controlenamao.model.Veiculo;
 import com.example.controlenamao.model.vo.HomeVo;
-
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -18,7 +18,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.controlenamao.Adapter.VeiculoAdapter;
 import com.example.controlenamao.controller.VeiculoController;
-import com.example.controlenamao.dao.VeiculoDao;
 import com.example.controlenamao.masks.MaskedRenamed;
 import com.example.controlenamao.model.Veiculo;
 
@@ -70,26 +69,27 @@ public class VeihcleFragment extends Fragment {
             }
         });
 
-        lvVeiculo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                new AlertDialog.Builder(getContext())
-                        .setTitle("Você deseja deletar " + listaVeiculos.get(position) + "da lista?")
-                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-//                                excluirVeiculo(position);
-                                gcAdapter.notifyDataSetChanged();
-                            }
-                        }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        }).create().show();
-                return false;
-            }
-        });
+        //POSSIVEL IMPLEMENTAÇÃO FUTURA PARA EXCLUIR TODOS AO SEGURAR UM ITEM POR DETERMINADO TEMPO
+//        lvVeiculo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+//                new AlertDialog.Builder(getContext())
+//                        .setTitle("Você deseja deletar " + listaVeiculos.get(position) + "da lista?")
+//                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+////                                excluirVeiculo(position);
+//                                gcAdapter.notifyDataSetChanged();
+//                            }
+//                        }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        }).create().show();
+//                return false;
+//            }
+//        });
         lvVeiculo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -98,7 +98,6 @@ public class VeihcleFragment extends Fragment {
                 adb.setTitle("Deletar?");
                 adb.setMessage("Deseja remover esse veículo? ");
                 //PEGANDO O ID DA LISTA NÃO DO BANCO
-                final Long positionToRemove = id;
                 gcAdapter.getItem((int) id);
                 adb.setNegativeButton("Não", null);
                 adb.setPositiveButton("Sim", new AlertDialog.OnClickListener() {
@@ -166,12 +165,4 @@ public class VeihcleFragment extends Fragment {
         VeiculoAdapter adapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
         lvVeiculo.setAdapter(adapter);
     }
-    private void excluirVeiculo(){
-        VeiculoAdapter adapter = new VeiculoAdapter(this.getContext(), listaVeiculos);
-        Long id = lvVeiculo.getSelectedItemId();
-        adapter.getItemId(id.intValue());
-//       veiculocontroller.apagarVeiculo(adapter);
-    }
-
-
 }
