@@ -40,7 +40,7 @@ public class HomeController {
     }
 
     public Long apagarCredito(Movimentacao movimentacao){
-        return MovimentacaoDao.getInstancia(context).deleteCredito(movimentacao);
+        return MovimentacaoDao.getInstancia(context).delete(movimentacao);
     }
     public Long apagarDebito(Movimentacao movimentacao){
         return MovimentacaoDao.getInstancia(context).deleteDebito(movimentacao);

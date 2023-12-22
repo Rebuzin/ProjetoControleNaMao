@@ -11,6 +11,8 @@ import com.example.controlenamao.helper.SQLiteDataHelper;
 import com.example.controlenamao.model.Frete;
 import com.example.controlenamao.model.Gasto;
 import com.example.controlenamao.model.Movimentacao;
+import com.example.controlenamao.model.Veiculo;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -87,25 +89,11 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
     public long update(Movimentacao obj) {
         return 0;
     }
-
     @Override
     public long delete(Movimentacao obj) {
-        return 0;
+        String[]identificador = {String.valueOf(obj.getId())};
+        return bd.delete(tableName,"ID = ?",identificador);
     }
-
-    public long deleteCredito(Movimentacao frete) {
-
-            String sql = "delete sum(VALOR) " +
-                    "from MOVIMENTACAO " +
-                    "where TIPO = 'C' AND FRETE_ID = " + frete.getId() + " ;"; //GASTO ID 3 = COMBUSTIVEL DE FORMA FIXA
-
-            Cursor c = bd.rawQuery(sql, null);
-
-            c.close();
-
-        return 0;
-    }
-
 
 
     public long deleteDebito(Movimentacao obj) {
@@ -194,7 +182,7 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
         ArrayList<Movimentacao> lista = new ArrayList<>();
         try {
 
-            String sql = "select VALOR, DATA, TIPO, VEICULO_ID " +
+            String sql = "select ID, VALOR, DATA, TIPO, VEICULO_ID " +
                     "from MOVIMENTACAO " +
                     "where TIPO = 'C' AND FRETE_ID NOT NULL " +
                     "ORDER BY DATA ;";
@@ -203,9 +191,10 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
             if (cursor.moveToFirst()) {
                 do {
                     Movimentacao movimentacao = new Movimentacao();
-                    movimentacao.setValor(cursor.getDouble(0));
-//                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(1))));
-                    movimentacao.setTipo(cursor.getString(1));
+                    movimentacao.setId(cursor.getInt(0));
+                    movimentacao.setValor(cursor.getDouble(1));
+                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(2))));
+                    movimentacao.setTipo(cursor.getString(3));
 //                    movimentacao.setVeiculo(Long.getId(String.valueOf(3)));
 
                     lista.add(movimentacao);
@@ -221,7 +210,7 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
         ArrayList<Movimentacao> lista = new ArrayList<>();
         try {
 
-            String sql = "select VALOR, DATA, TIPO, VEICULO_ID " +
+            String sql = "select ID, VALOR, DATA, TIPO, VEICULO_ID " +
                     "from MOVIMENTACAO " +
                     "where TIPO = 'D' AND GASTO_ID NOT NULL " +
                     "ORDER BY DATA ;";
@@ -230,9 +219,10 @@ public class MovimentacaoDao implements GenericDao<Movimentacao> {
             if (cursor.moveToFirst()) {
                 do {
                     Movimentacao movimentacao = new Movimentacao();
-                    movimentacao.setValor(cursor.getDouble(0));
-//                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(1))));
-                    movimentacao.setTipo(cursor.getString(1));
+                    movimentacao.setId(cursor.getInt(0));
+                    movimentacao.setValor(cursor.getDouble(1));
+                    movimentacao.setData(new java.util.Date(Date.parse(cursor.getString(2))));
+                    movimentacao.setTipo(cursor.getString(3));
 //                    movimentacao.setVeiculo(Long.getId(String.valueOf(3)));
 
                     lista.add(movimentacao);
